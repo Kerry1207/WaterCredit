@@ -1,0 +1,33 @@
+{
+  "name": "waste-water",
+  "version": "1.0.0",
+  "description": "Useful project for decrease waste water in the world using blockchain",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "typescript": "npx tsc",
+    "tailwind": "npx tailwindcss -i ./css/input.css -o ./out/output.css --watch"
+  },
+  "keywords": [
+    "waste",
+    "water",
+    "masterz",
+    "solana",
+    "solanabootcamp"
+  ],
+  "author": "Kerry1207, Ca1man0, SamuelePassiatore",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@solana/web3.js": "^1.93.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "serve-static": "^1.15.0",
+    "tailwindcss": "^3.4.4",
+    "ts-node": "^10.9.2"
+  }
+}
