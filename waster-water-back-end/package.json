@@ -1,12 +1,11 @@
 {
-  "name": "waste-water",
+  "name": "waste-water-back-end",
   "version": "1.0.0",
   "description": "Useful project for decrease waste water in the world using blockchain",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "typescript": "npx tsc",
-    "tailwind": "npx tailwindcss -i ./css/input.css -o ./out/output.css --watch"
+    "server": "node server.js",
+    "server-reloading": "nodemon server.js"
   },
   "keywords": [
     "waste",
@@ -20,14 +19,13 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "typescript": "^5.4.5"
+    "mongodb": "^6.7.0"
   },
   "devDependencies": {
-    "@solana/web3.js": "^1.93.0",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
-    "serve-static": "^1.15.0",
-    "tailwindcss": "^3.4.4",
-    "ts-node": "^10.9.2"
+    "pdf-lib": "^1.17.1",
+    "pdf-to-base64": "^1.0.3",
+    "serve-static": "^1.15.0"
   }
 }

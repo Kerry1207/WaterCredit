@@ -1,0 +1,29 @@
+{
+  "name": "waste-water-front-end",
+  "version": "1.0.0",
+  "description": "Useful project for decrease waste water in the world using blockchain",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "waste",
+    "water",
+    "masterz",
+    "solana",
+    "solanabootcamp"
+  ],
+  "author": "Kerry1207, Ca1man0, SamuelePassiatore",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite": "^5.3.1"
+  }
+}
