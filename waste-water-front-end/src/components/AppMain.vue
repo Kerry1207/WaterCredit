@@ -1,14 +1,29 @@
 <script>
-import axios from 'axios';
-
 export default {
-    name: "AppMain",
     data() {
         return {
-
+            // Your component's data properties
         };
     },
+    methods: {
+        async connectWallet() {
+            if ("solana" in window) {
+                try {
+                    await window.solana.connect();
 
+                    const provider = window.solana;
+                    let pubKey = provider.publicKey.toString();
+                    document.getElementById("welcome_message").innerText = "Hello, " + pubKey + " !";
+                } catch (error) {
+                    console.error("Failed to connect to Solana wallet", error);
+                    document.getElementById("welcome_message").innerText = "Failed to connect to wallet.";
+                }
+            } else {
+                console.error("Solana object not found in window.");
+                document.getElementById("welcome_message").innerText = "Solana object not found in window.";
+            }
+        }
+    }
 };
 </script>
 
@@ -18,7 +33,8 @@ export default {
             WASTE WATER
         </div>
         <div class="d-flex flex-column align-items-center">
-            <button class="btn btn-primary button-custom">Connect wallet</button>
+            <button class="btn btn-primary button-custom" @click="connectWallet">Connect wallet</button>
+            <p id="welcome_message"></p>
             <br>
             <router-link :to="{ name: 'upload-bill' }">Upload Bill</router-link>
             <br>
