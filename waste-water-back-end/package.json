@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Useful project for decrease waste water in the world using blockchain",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "server": "node server.js",
-    "server-reloading": "nodemon server.js"
+    "server-reloading": "nodemon server.js",
+    "token": "node ./token/main.js"
   },
   "keywords": [
     "waste",
@@ -22,6 +24,11 @@
     "mongodb": "^6.7.0"
   },
   "devDependencies": {
+    "@metaplex-foundation/mpl-token-metadata": "^3.2.1",
+    "@metaplex-foundation/umi": "^0.9.2",
+    "@metaplex-foundation/umi-bundle-defaults": "^0.9.2",
+    "@solana/spl-token": "^0.4.7",
+    "@solana/web3.js": "^1.93.2",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "pdf-lib": "^1.17.1",

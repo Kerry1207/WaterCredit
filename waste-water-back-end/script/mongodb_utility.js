@@ -1,15 +1,25 @@
 const { MongoClient } = require('mongodb');
 
+async function findElements(param) {
+    let client = await connect();
+    let dbo = client.db("wastewater");
+    let collection = dbo.collection("bill");
+    let query = { status: 1, address: '' + param + '' }
+    let results = await collection.find(query).sort({ period: 1 }).toArray();
+    return results;
+}
+
 async function registerData(solanaAddress, uploadDate, typeImage, pdfBase64) {
     let client = await connect();
-    var dbo = client.db("wastewater");
+    let dbo = client.db("wastewater");
     let collection = dbo.collection("bill");
     let billTemplate = createObj(solanaAddress, uploadDate, typeImage, pdfBase64);
-    await collection.insertOne(billTemplate, function(err, res) {
+    let element = await collection.insertOne(billTemplate, function(err, res) {
         if(err) throw err;
             console.log("Inserted data");
         });
     client.close();
+    return element.insertedId.toString();
 }
 
 async function connect() {
@@ -26,5 +36,6 @@ function createObj(solanaAddress, uploadDate, typeImage, pdfBase64) {
 }
 
 module.exports = {
-    registerData: registerData
+    registerData: registerData,
+    findElements: findElements
 }
