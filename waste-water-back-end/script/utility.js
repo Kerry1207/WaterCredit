@@ -1,3 +1,4 @@
+const fs = require('node:fs');
 
 function calculateTokenAmount(billAmounts) {
     if(billAmounts.length === 0) {
@@ -12,6 +13,13 @@ function calculateTokenAmount(billAmounts) {
     }
 }
 
+function existOrCreateFolder(path) {
+    if(!fs.existsSync(path)) {
+        fs.mkdirSync(path);
+    }
+}
+
 module.exports = {
-    calculateTokenAmount: calculateTokenAmount
+    calculateTokenAmount: calculateTokenAmount,
+    existOrCreateFolder: existOrCreateFolder
 }
