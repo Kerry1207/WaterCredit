@@ -33,6 +33,7 @@ export default {
 
 <template>
     <main class="d-flex flex-column justify-content-center align-items-center">
+        <div class="fs-5">Reduce, Save, Reward</div>
         <div class="title">
             WASTE WATER
         </div>
