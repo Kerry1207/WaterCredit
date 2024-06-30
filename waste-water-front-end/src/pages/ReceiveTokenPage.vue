@@ -16,6 +16,8 @@ export default {
     <div class="receive-token">
         <img src="../../public/Image_blur.png" alt="logo" class="logo-header" @click="goToHomePage">
         Receive Token
+        <div>claim your tokens</div>
+        <div>è stato creato un associated account, al quale sono stati inviati i tokens. </div>
     </div>
 </template>
 
