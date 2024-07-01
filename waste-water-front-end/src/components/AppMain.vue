@@ -52,8 +52,6 @@ export default {
                     Upload Bill
                 </button>
             </router-link>
-            <br />
-            <router-link v-if="walletAddress" :to="{ name: 'receive-token' }">Receive Token</router-link>
         </div>
     </main>
 </template>

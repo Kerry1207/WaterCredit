@@ -13,6 +13,8 @@ export default {
             previousUploadMessageColor: '', // Color for previous month upload message
             currentUploadMessage: '', // Message for current month upload
             currentUploadMessageColor: '', // Color for current month upload message
+            previousUploadId: null, // ID returned after previous month upload
+            currentUploadId: null, // ID returned after current month upload
         };
     },
     computed: {
@@ -37,12 +39,12 @@ export default {
                 reader.readAsDataURL(file);
                 this.errorMessage = '';
             } else {
-                this.errorMessage = 'Si accettano solo immagini in formato JPG.';
+                this.errorMessage = 'Only JPG images are accepted.';
             }
         },
         async uploadImage(imageBase64, monthType) {
             if (!imageBase64) {
-                this.errorMessage = 'È necessario caricare una bolletta.';
+                this.errorMessage = 'You need to upload a bill.';
                 return;
             }
 
@@ -59,38 +61,67 @@ export default {
                 const response = await axios.post('http://localhost:3000/uploadImage', payload);
                 if (response.status === 200 && response.data.status === 'success') {
                     if (monthType === 'previous') {
-                        this.previousUploadMessage = `Upload della bolletta precedente riuscito, ID: ${response.data.id}`;
+                        this.previousUploadMessage = `Previous month bill upload successful, ID: ${response.data.id}`;
                         this.previousUploadMessageColor = 'green';
+                        this.previousUploadId = response.data.id;
                     } else {
-                        this.currentUploadMessage = `Upload della bolletta corrente riuscito, ID: ${response.data.id}`;
+                        this.currentUploadMessage = `Current month bill upload successful, ID: ${response.data.id}`;
                         this.currentUploadMessageColor = 'green';
+                        this.currentUploadId = response.data.id;
                     }
                 } else {
-                    throw new Error('Upload fallito');
+                    throw new Error('Upload failed');
                 }
             } catch (error) {
                 console.error(`An error occurred while uploading the ${monthType} month image`, error);
                 if (monthType === 'previous') {
-                    this.previousUploadMessage = `Errore durante l'upload della bolletta precedente`;
+                    this.previousUploadMessage = `Error during previous month bill upload`;
                     this.previousUploadMessageColor = 'red';
                 } else {
-                    this.currentUploadMessage = `Errore durante l'upload della bolletta corrente`;
+                    this.currentUploadMessage = `Error during current month bill upload`;
                     this.currentUploadMessageColor = 'red';
                 }
+            }
+        },
+        async processData(id) {
+            try {
+                const response = await axios.post('http://localhost:3000/processData', { id });
+                if (response.status === 200 && response.data.status === 'success') {
+                    console.log(`Data processing successful for ID: ${id}`);
+                } else {
+                    throw new Error('Data processing failed');
+                }
+            } catch (error) {
+                console.error(`An error occurred while processing data for ID: ${id}`, error);
+                this.errorMessage = 'An error occurred while processing the data.';
             }
         },
         uploadPreviousMonthImage() {
             if (this.previousMonthImage) {
                 this.uploadImage(this.previousMonthImage, 'previous');
             } else {
-                this.errorMessage = 'È necessario caricare una bolletta precedente.';
+                this.errorMessage = 'You need to upload a previous month bill.';
             }
         },
         uploadCurrentMonthImage() {
             if (this.currentMonthImage) {
                 this.uploadImage(this.currentMonthImage, 'current');
             } else {
-                this.errorMessage = 'È necessario caricare una bolletta corrente.';
+                this.errorMessage = 'You need to upload a current month bill.';
+            }
+        },
+        processPreviousMonthData() {
+            if (this.previousUploadId) {
+                this.processData(this.previousUploadId);
+            } else {
+                this.errorMessage = 'You need to upload a previous month bill first.';
+            }
+        },
+        processCurrentMonthData() {
+            if (this.currentUploadId) {
+                this.processData(this.currentUploadId);
+            } else {
+                this.errorMessage = 'You need to upload a current month bill first.';
             }
         }
     }
@@ -115,7 +146,10 @@ export default {
                 </div>
                 <div v-if="previousUploadMessage" :style="{ color: previousUploadMessageColor }">{{
                 previousUploadMessage }}</div>
-                <div><button class="btn btn-success">process data</button></div>
+                <div v-if="previousUploadMessageColor === 'green'">
+                    <button class="btn btn-success" @click="processPreviousMonthData">Process Previous Month
+                        Data</button>
+                </div>
             </div>
             <div class="d-flex flex-column align-items-center">
                 <div class="input-group mb-1">
@@ -123,14 +157,23 @@ export default {
                         accept="image/jpeg" />
                     <button class="btn btn-secondary" @click="uploadCurrentMonthImage">Upload Current Bill</button>
                 </div>
-                <div v-if="currentUploadMessage" :style="{ color: currentUploadMessageColor }">{{
-                currentUploadMessage }}</div>
-                <div><button class="btn btn-success">process data</button></div>
+                <div v-if="currentUploadMessage" :style="{ color: currentUploadMessageColor }">{{ currentUploadMessage
+                    }}</div>
+                <div v-if="currentUploadMessageColor === 'green'">
+                    <button class="btn btn-success" @click="processCurrentMonthData">Process Current Month Data</button>
+                </div>
             </div>
         </div>
-        <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
+        <p v-if="errorMessage" style="color: red;" class="text-center mt-5">{{ errorMessage }}</p>
+        <div class="d-flex justify-content-center mt-5">
+            <router-link :to="{ name: 'receive-token', query: { address: this.$route.query.address } }"
+                class="btn btn-warning">Go
+                to claim your
+                tokens</router-link>
+        </div>
     </div>
 </template>
+
 
 <style scoped lang="scss">
 .upload-bill {
