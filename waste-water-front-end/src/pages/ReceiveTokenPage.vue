@@ -45,7 +45,7 @@ export default {
         <img src="../../public/Image_blur.png" alt="logo" class="logo-header" @click="goToHomePage">
         <div class="d-flex flex-column align-items-center justify-content-center">
             <div class="btn btn-secondary" @click="claimTokens">Claim your tokens</div>
-            <div v-if="message" :style="{ color: messageColor }">{{ message }}</div>
+            <div v-if="message" :style="{ color: messageColor }" class="mt-5">{{ message }}</div>
             <div v-if="associatedAccountMessage" :style="{ color: 'green' }">{{ associatedAccountMessage }}</div>
         </div>
     </div>
