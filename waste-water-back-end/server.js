@@ -26,12 +26,11 @@ app.use((req, res, next) => {
         res.sendStatus(200); 
     } else {
         next(); 
-    }
+    }
 });
 
 const port = process.env.APPLICATION_PORT;
 const fullDomain = process.env.ENDPOINT.concat(':').concat(process.env.APPLICATION_PORT);
-const mintTokenAddress = process.env.TOKEN_MINT_ADDRESS;
 const pyFullDomain = process.env.ENDPOINT_PY.concat(':').concat(process.env.PY_PORT);
 
 app.listen(port, () => {
@@ -71,6 +70,7 @@ app.post('/uploadImage', async function(req, res) {
         let idElement = await mongoDbUtility.registerData(solanaAddress, uploadDateParam, typeImageParam, base64PDFString);
         res.status(200).json({ status: 'success', id: idElement });
     } catch(exception) {
+        console.error("[uploadImage] Error message: " + error);
         res.status(200).json({ status: 'error' });
     }
 });
@@ -80,14 +80,15 @@ app.post('/processData', async function(req, res) {
         let data = { "id" : req.body.id };
         await fetch(pyFullDomain.concat("/extractData"),
          { method: "POST", mode: "cors", cache: "no-cache", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }
-        ).then((response) => {
-            let responseBody = response.json();
+        ).then(async(response) => {
+            let responseBody = await response.json();
             if (responseBody.status == 'error') {
                 throw new Error();
             }
         });
         res.status(200).json({ status: 'success' });
     } catch(error) {
+        console.error("[processData] Error message: " + error);
         res.status(500).json({ status: 'error' });
     }
 });
@@ -101,6 +102,20 @@ app.post('/calculateToken', async function(req, res) {
             billAmounts.push(parseFloat(elements[i].tot));
         }
         let tokenAmount = utility.calculateTokenAmount(billAmounts);
+        let dataATA = { "address": addressSolana };
+        let responseATA = await fetch(pyFullDomain.concat("/createAssociatedTokenAccount"), 
+                                        { method: "POST", mode: "cors", cache: "no-cache", headers: { "Content-Type": "application/json"}, body: JSON.stringify(dataATA) });
+        let responseATAParsed = await responseATA.json();
+        if (responseATAParsed.status == 'error') {
+            throw new Error("Error to create associated token account");
+        }
+        let dataMint = { "address": addressSolana, "amount": tokenAmount };
+        let responseMintToken = await fetch(pyFullDomain.concat("/mintToken"), 
+                                        { method: "POST", mode: 'cors', cache: "no-cache", headers: { "Content-Type": "application/json"}, body: JSON.stringify(dataMint) });
+        let responseMintTokenParsed = await responseMintToken.json();
+        if (responseMintTokenParsed.status == 'error') {
+            throw new Error("Error to mint token into account");
+        }
         res.status(200).json({ status: 'success', amount:  tokenAmount });
     } catch(error) {
         console.error("[calculateToken] Error message: " + error);
