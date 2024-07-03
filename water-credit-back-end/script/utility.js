@@ -1,15 +1,14 @@
 const fs = require('node:fs');
+const { CALCULATE_TOKEN_AMOUNT_CODE_ERROR } = require('./error_code');
 
-function calculateTokenAmount(billAmounts) {
-    if(billAmounts.length === 0) {
-        throw new Error("Amounts are empty");
-    }
-    let difference = billAmounts[0] - billAmounts[1];
+function calculateTokenAmount(firstBillAmount, secondBillAmount) {
+    let difference = parseFloat(firstBillAmount) - parseFloat(secondBillAmount);
     if(difference > 0) {
         let total = (difference * 0.05).toFixed(0);
         return total;
     } else {
-        return 0;
+        console.log(Date.now() + " - [calculateTokenAmount] Difference less than zero");
+        throw new Error(CALCULATE_TOKEN_AMOUNT_CODE_ERROR);
     }
 }
 
@@ -19,7 +18,18 @@ function existOrCreateFolder(path) {
     }
 }
 
+function getCodeFromErrorMessage(errorMessage) {
+    const regex = /Error:\s*(\d+)/;
+    const match = errorMessage.match(regex);
+    if(match) {
+        let errorCode = match[1];
+        return errorCode;
+    }
+    return "Generic error";
+}
+
 module.exports = {
     calculateTokenAmount: calculateTokenAmount,
-    existOrCreateFolder: existOrCreateFolder
+    existOrCreateFolder: existOrCreateFolder,
+    getCodeFromErrorMessage: getCodeFromErrorMessage
 }

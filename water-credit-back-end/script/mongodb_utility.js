@@ -1,12 +1,12 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
-async function findElements(param) {
+async function findElementById(idElement, addressSolana) {
     let client = await connect();
     let dbo = client.db("wastewater");
     let collection = dbo.collection("bill");
-    let query = { status: 1, address: '' + param + '' }
-    let results = await collection.find(query).sort({ period: 1 }).toArray();
-    return results;
+    let query = { _id: new ObjectId(idElement), status: 1, address: '' + addressSolana + '' }
+    let element = await collection.findOne(query);
+    return element;
 }
 
 async function registerData(solanaAddress, uploadDate, typeImage, pdfBase64) {
@@ -37,5 +37,5 @@ function createObj(solanaAddress, uploadDate, typeImage, pdfBase64) {
 
 module.exports = {
     registerData: registerData,
-    findElements: findElements
+    findElementById: findElementById
 }
