@@ -1,5 +1,5 @@
 {
-  "name": "waste-water-front-end",
+  "name": "water-credit-front-end",
   "version": "1.0.0",
   "description": "Useful project for decrease waste water in the world using blockchain",
   "private": true,
@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "keywords": [
-    "waste",
     "water",
+    "credit",
     "masterz",
     "solana",
     "solanabootcamp"

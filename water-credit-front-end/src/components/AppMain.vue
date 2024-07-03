@@ -35,7 +35,7 @@ export default {
     <main class="d-flex flex-column justify-content-center align-items-center">
         <div class="fs-5">Reduce, Save, Reward</div>
         <div class="title">
-            WASTE WATER
+            WATER CREDIT
         </div>
         <div class="d-flex flex-column align-items-center">
             <button class="btn btn-primary button-custom" @click="connectWallet" v-if="!walletAddress">
