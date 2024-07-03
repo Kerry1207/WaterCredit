@@ -141,6 +141,7 @@ export default {
                 }
             });
         }
+
     }
 };
 </script>
@@ -185,7 +186,8 @@ export default {
         <p v-if="processMessage" :style="{ color: processMessageColor }" class="text-center mt-5">{{ processMessage }}
         </p>
         <div class="d-flex flex-column align-items-center justify-content-center mt-5">
-            <router-link :to="{ name: 'receive-token', query: { address: this.$route.query.address } }"
+            <router-link
+                :to="{ name: 'receive-token', query: { address: this.$route.query.address, idbill_1: previousUploadId, idbill_2: currentUploadId } }"
                 class="btn btn-warning">Go
                 to claim your
                 tokens</router-link>
