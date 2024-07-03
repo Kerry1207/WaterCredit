@@ -16,10 +16,14 @@ export default {
         },
         async claimTokens() {
             try {
-                const walletAddress = this.$route.query.address; // Assuming wallet address is passed as a query parameter
+                const walletAddress = this.$route.query.address; // Retrieve wallet address from query parameter
+                const idbill_1 = this.$route.query.idbill_1;
+                const idbill_2 = this.$route.query.idbill_2;
 
                 const response = await axios.post('http://localhost:3000/calculateToken', {
                     address: walletAddress,
+                    idbill_1: idbill_1,
+                    idbill_2: idbill_2
                 });
 
                 if (response.status === 200 && response.data.status === 'success') {
@@ -42,7 +46,13 @@ export default {
 
 <template>
     <div class="receive-token">
-        <img src="../../public/Image_blur.png" alt="logo" class="logo-header" @click="goToHomePage">
+        <div class="d-flex align-items-center">
+            <img src="../../public/Image_blur.png" alt="logo" class="logo-header" @click="goToHomePage">
+            <div class="me-4">
+                <img src="../assets/phantom.jpg" alt="metamask" class="logo-wallet me-1">
+                <span>{{ this.$route.query.address }}</span>
+            </div>
+        </div>
         <div class="d-flex flex-column align-items-center justify-content-center">
             <div class="btn btn-secondary" @click="claimTokens">Claim your tokens</div>
             <div v-if="message" :style="{ color: messageColor }" class="mt-5">{{ message }}</div>
@@ -62,5 +72,9 @@ export default {
 .logo-header {
     width: 100px;
     cursor: pointer;
+}
+
+.logo-wallet {
+    height: 30px;
 }
 </style>
