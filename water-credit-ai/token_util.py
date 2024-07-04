@@ -9,7 +9,6 @@ from spl.token.instructions import get_associated_token_address, create_associat
 
 
 class TokenUtil:
-    
     def __init__(self, recipient_pub_key):
         load_dotenv()
         seed_array = self.retrieve_seed()
@@ -68,7 +67,7 @@ class TokenUtil:
                 amount=amount_calculated
             )
             print("Mint to transaction: ", tx_resp.value)
-            return True
+            return True, tx_resp.value
         except Exception as e:
             print(e.args[0])
-        return False
+        return False, ""

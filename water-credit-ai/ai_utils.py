@@ -40,7 +40,7 @@ class AIUtils:
                 period = ut.extract_value_regex(pattern=r"period: (\d{4}\/\d{2})", text=match, index_group=1) + "/01"
                 update_values = {
                     "$set": {"fiscalCode": fiscal_code, "idCustomer": customer, "tot": tot, "period": period,
-                             "status": 1}}
+                             "processed": 1}}
                 mongo_util.update(query={"_id": element["_id"]}, update_values=update_values)
                 print("Updated element")
                 http_req.delete(url=f"https://huggingface.co/chat/conversation/{conversation_id}")
