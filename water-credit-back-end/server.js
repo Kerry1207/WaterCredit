@@ -7,7 +7,8 @@ const { PDFDocument, rgb } = require('pdf-lib');
 const pdf2base64 = require('pdf-to-base64');
 const mongoDbUtility = require('./script/mongodb_utility');
 const utility = require('./script/utility');
-const { WRITING_IMAGE_INTO_FOLDER_CODE_ERROR, EXTRACT_DATA_CODE_ERROR, MINT_TOKEN_CODE_ERROR, CREATE_ASSOCIATED_TOKEN_ACCOUNT_CODE_ERROR } = require('./script/error_code');
+const { BILL_TO_PROCESS_NOT_FOUND_CODE_ERROR, WRITING_IMAGE_INTO_FOLDER_CODE_ERROR, 
+    EXTRACT_DATA_CODE_ERROR, MINT_TOKEN_CODE_ERROR, CREATE_ASSOCIATED_TOKEN_ACCOUNT_CODE_ERROR } = require('./script/error_code');
 
 require('dotenv').config();
 
@@ -99,6 +100,9 @@ app.post('/calculateToken', async function(req, res) {
         let idSecondBill = req.body.idbill_2;
         let firstBill = await mongoDbUtility.findElementById(idFirstBill, addressSolana);
         let secondBill = await mongoDbUtility.findElementById(idSecondBill, addressSolana);
+        if(firstBill === null || secondBill === null) {
+            throw Error(BILL_TO_PROCESS_NOT_FOUND_CODE_ERROR);
+        }
         let tokenAmount = utility.calculateTokenAmount(firstBill.tot, secondBill.tot);
         let dataATA = { "address": addressSolana };
         let responseATA = await fetch(pyFullDomain.concat("/createAssociatedTokenAccount"), 
@@ -107,14 +111,15 @@ app.post('/calculateToken', async function(req, res) {
         if (responseATAParsed.status == 'error') {
             throw new Error(CREATE_ASSOCIATED_TOKEN_ACCOUNT_CODE_ERROR);
         }
-        let dataMint = { "address": addressSolana, "amount": tokenAmount };
+        let dataMint = { "address": addressSolana, "amount": tokenAmount, "id_bill_1": idFirstBill, "id_bill_2": idSecondBill };
         let responseMintToken = await fetch(pyFullDomain.concat("/mintToken"), 
                                         { method: "POST", mode: 'cors', cache: "no-cache", headers: { "Content-Type": "application/json"}, body: JSON.stringify(dataMint) });
         let responseMintTokenParsed = await responseMintToken.json();
         if (responseMintTokenParsed.status == 'error') {
             throw new Error(MINT_TOKEN_CODE_ERROR);
         }
-        res.status(200).json({ status: 'success', amount:  tokenAmount });
+        let transactionSignature = responseMintTokenParsed.tx;
+        res.status(200).json({ status: 'success', amount:  tokenAmount, transaction: transactionSignature });
     } catch(error) {
         console.error("[calculateToken] Error message: " + error);
         res.status(500).json({ status: 'error', code: utility.getCodeFromErrorMessage(error.toString()) });
