@@ -8,6 +8,9 @@ export default {
             message: '',
             messageColor: '',
             associatedAccountMessage: '',
+            transactionLink: '',
+            transactionId: '',
+            isLoading: false
         };
     },
     methods: {
@@ -15,6 +18,7 @@ export default {
             this.$router.push({ name: 'home' });
         },
         async claimTokens() {
+            this.isLoading = true;
             try {
                 const walletAddress = this.$route.query.address; // Retrieve wallet address from query parameter
                 const idbill_1 = this.$route.query.idbill_1;
@@ -30,6 +34,8 @@ export default {
                     this.message = `You have received ${response.data.amount} tokens.`;
                     this.messageColor = 'green';
                     this.associatedAccountMessage = 'An associated account has been created, and tokens have been sent to it.';
+                    this.transactionLink = `https://explorer.solana.com/tx/${response.data.transaction}?cluster=devnet`;
+                    this.transactionId = response.data.transaction;
                 } else {
                     this.message = 'Error calculating tokens. Please try again.';
                     this.messageColor = 'red';
@@ -38,11 +44,14 @@ export default {
                 console.error("Error claiming tokens:", error);
                 this.message = 'Error calculating tokens. Please try again.';
                 this.messageColor = 'red';
+            } finally {
+                this.isLoading = false;
             }
         },
     },
 };
 </script>
+
 
 <template>
     <div class="receive-token">
@@ -55,11 +64,21 @@ export default {
         </div>
         <div class="d-flex flex-column align-items-center justify-content-center">
             <div class="btn btn-secondary" @click="claimTokens">Claim your tokens</div>
+            <div v-if="isLoading" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
             <div v-if="message" :style="{ color: messageColor }" class="mt-5">{{ message }}</div>
-            <div v-if="associatedAccountMessage" :style="{ color: 'green' }">{{ associatedAccountMessage }}</div>
+            <div v-if="message && messageColor === 'green'">
+                <div :style="{ color: 'green' }">{{ associatedAccountMessage }}</div>
+                <div class="mt-3 text-center">
+                    <p>Transaction Hash: {{ transactionId }}</p>
+                    <a :href="transactionLink" target="_blank">See transaction on Solana Explorer</a>
+                </div>
+            </div>
         </div>
     </div>
 </template>
+
 
 <style scoped lang="scss">
 .receive-token {
