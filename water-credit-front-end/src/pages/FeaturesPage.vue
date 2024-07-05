@@ -1,24 +1,21 @@
 <script>
-import AppMain from '../components/AppMain.vue';
 import AppHeader from '../components/AppHeader.vue';
 
 export default {
-    name: 'HomePage',
-    components: { AppMain, AppHeader },
-
+    name: 'FeaturesPage',
+    components: { AppHeader },
 };
 
 </script>
 
 <template>
-    <div class="home">
+    <div class="features">
         <AppHeader></AppHeader>
-        <AppMain></AppMain>
     </div>
 </template>
 
 <style scoped lang="scss">
-.home {
+.features {
     background-image: url('../assets/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
