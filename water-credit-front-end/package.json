@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "installRun": "npm install & npm run dev",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
