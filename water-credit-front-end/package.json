@@ -16,7 +16,7 @@
     "solana",
     "solanabootcamp"
   ],
-  "author": "Kerry1207, Ca1man0, SamuelePassiatore",
+  "author": "Kerry1207, SamuelePassiatore",
   "license": "MIT",
   "dependencies": {
     "@solana/wallet-adapter-react-ui": "^0.9.35",

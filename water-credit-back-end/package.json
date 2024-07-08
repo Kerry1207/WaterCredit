@@ -16,12 +16,13 @@
     "solana",
     "solanabootcamp"
   ],
-  "author": "Kerry1207, Ca1man0, SamuelePassiatore",
+  "author": "Kerry1207, SamuelePassiatore",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongodb": "^6.7.0"
+    "mongodb": "^6.7.0",
+    "nodemon": "^3.1.4"
   },
   "devDependencies": {
     "@metaplex-foundation/mpl-token-metadata": "^3.2.1",
