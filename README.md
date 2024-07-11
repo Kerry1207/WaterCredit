@@ -35,8 +35,9 @@
 # Architecture
 
 <div style="display: flex; justify-content: center;">
-<img src="./docs/WaterCredit_StructureOfProject.png" width="500" heigth="500"  />
+  <img src="./docs/WaterCredit_StructureOfProject.png" width="500" heigth="500"  />
 </div>
+<br/>
 The application architecture includes four interdependent layers:<br/>
 <ul>
 <li><b>Front-end</b>: structured with multiple frameworks, the layer interfaces directly with the user;<br/></li>
@@ -79,10 +80,14 @@ After made previous steps, the next one is to create '.env' file for set the fol
 > <br/>
 > HF_CHAT=[your_HuggingChat_cookie]<br/>
 > MINT_TOKEN_ADDRESS=[token_address_Solana_Testnet]<br/>
+> MOCK_AI=OFF<br/>
+> MOCK_NUMBER_ITEM='1'<br/>
 > <br/>
-> <br/>
-> For HuggingChat, you must sign up on HuggingChat website and into browser do a right click, click on "Inspect" and go to "Application" tab.
-> At this point you can see the key like that "hf-chat" and related value. You must copy that value and put inside '.env' file into HF_CHAT key.<br/>
+<br/>
+The paremeters MOCK_AI and MOCK_NUMBER_ITEM work together when the first parameter set to "ON" value. That means that it will mock the response from AI.
+The value of MOCK_NUMBER_ITEM must be initialized to '1'.
+For HuggingChat, you must sign up on HuggingChat website and into browser do a right click, click on "Inspect" and go to "Application" tab.
+At this point you can see the key like that "hf-chat" and related value. You must copy that value and put inside '.env' file into HF_CHAT key.<br/><br/>
 
 ⚠️ <u><b>We remember that this project it's only for academic study. We didn't take any responsability of damages that you could make with this code on HuggingChat website.</b></u> ⚠️
 
