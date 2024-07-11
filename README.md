@@ -34,7 +34,9 @@
 
 # Architecture
 
-<img src="./docs/WaterCredit_StructureOfProject.png" width="500" heigth="500" style="display: block; margin-left: auto; margin-right: auto;" />
+<div style="display: flex; justify-content: center;">
+<img src="./docs/WaterCredit_StructureOfProject.png" width="500" heigth="500"  />
+</div>
 The application architecture includes four interdependent layers:<br/>
 <ul>
 <li><b>Front-end</b>: structured with multiple frameworks, the layer interfaces directly with the user;<br/></li>
