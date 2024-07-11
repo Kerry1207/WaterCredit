@@ -74,7 +74,7 @@ export default {
                 return;
             }
 
-            const walletAddress = this.$route.query.address; // Retrieve wallet address from query parameter
+            const walletAddress = this.$route.query.address;
 
             const payload = {
                 address: walletAddress,
@@ -87,15 +87,15 @@ export default {
                 const response = await axios.post('http://localhost:3000/uploadImage', payload);
                 if (response.status === 200 && response.data.status === 'success') {
                     if (monthType === 'previous') {
-                        this.previousUploadMessage = `Last month bill upload successful, ID: ${response.data.id}`;
+                        this.previousUploadMessage = `Last month bill upload successful`;
                         this.previousUploadMessageColor = 'green';
                         this.previousUploadId = response.data.id;
                     } else {
-                        this.currentUploadMessage = `Current month bill upload successful, ID: ${response.data.id}`;
+                        this.currentUploadMessage = `Current month bill upload successful`;
                         this.currentUploadMessageColor = 'green';
                         this.currentUploadId = response.data.id;
                     }
-                    this.checkProcessingStatus(); // Check processing status to update the button rendering
+                    this.checkProcessingStatus();
                 } else {
                     throw new Error('Upload failed');
                 }
@@ -121,11 +121,11 @@ export default {
                 const response = await axios.post('http://localhost:3000/processData', { id });
                 if (response.status === 200 && response.data.status === 'success') {
                     if (monthType === 'previous') {
-                        this.processPreviousMessage = `Data processing successful for ID: ${id}`;
+                        this.processPreviousMessage = `Data processing successful`;
                         this.processPreviousMessageColor = 'green';
                         this.previousMonthProcessed = true;
                     } else {
-                        this.processCurrentMessage = `Data processing successful for ID: ${id}`;
+                        this.processCurrentMessage = `Data processing successful`;
                         this.processCurrentMessageColor = 'green';
                         this.currentMonthProcessed = true;
                     }
@@ -133,7 +133,7 @@ export default {
                     throw new Error('Data processing failed');
                 }
             } catch (error) {
-                console.error(`An error occurred while processing data for ID: ${id}`, error);
+                console.error(`An error occurred while processing data`, error);
                 if (monthType === 'previous') {
                     this.processPreviousMessage = 'An error occurred while processing the data.';
                     this.processPreviousMessageColor = 'red';
@@ -147,7 +147,7 @@ export default {
                 } else {
                     this.isProcessingCurrent = false;
                 }
-                this.checkProcessingStatus(); // Check processing status to update the button rendering
+                this.checkProcessingStatus();
             }
         },
         checkProcessingStatus() {
@@ -205,145 +205,168 @@ export default {
 
 <template>
     <div class="upload-bill">
-        <div class="overlay">
-            <nav class="navbar px-4">
-                <div class="d-flex align-items-center div-logo">
-                    <img src=" ../../public/Image_blur.png" alt="logo" class="logo-image" @click="goToHomePage">
-                    <span class="fs-2 name-token">WCT</span>
-                </div>
-                <div class="d-flex justify-content-center align-items-center div-links">
-                    <router-link class="navbar-link" :to="{ name: 'solutions' }">Solutions</router-link>
-                    <router-link class="navbar-link padding-left" :to="{ name: 'features' }">Features</router-link>
-                    <router-link class="navbar-link padding-left" :to="{ name: 'about-us' }">About Us</router-link>
-                    <router-link class="last-navbar-link padding-left"
-                        :to="{ name: 'resources' }">Resources</router-link>
-                </div>
-                <div class="div-empty d-flex align-items-center">
-                    <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">
-                    <p id="wallet-address" class="m-0">
-                        {{ formatWalletAddress }}
-                    </p>
-                </div>
-            </nav>
+        <nav class="navbar px-4">
+            <div class="d-flex align-items-center div-logo">
+                <img src=" ../../public/Image_blur.png" alt="logo" class="logo-image" @click="goToHomePage">
+                <span class="fs-2 name-token">WCT</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center div-links">
+                <router-link class="navbar-link" :to="{ name: 'solutions' }">Solutions</router-link>
+                <router-link class="navbar-link padding-left" :to="{ name: 'features' }">Features</router-link>
+                <router-link class="navbar-link padding-left" :to="{ name: 'about-us' }">About Us</router-link>
+                <router-link class="last-navbar-link padding-left" :to="{ name: 'resources' }">Resources</router-link>
+            </div>
+            <div class="div-empty d-flex align-items-center">
+                <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">
+                <p id="wallet-address" class="m-0">
+                    {{ formatWalletAddress }}
+                </p>
+            </div>
+        </nav>
 
-            <div class="mt-5 d-flex justify-content-center main">
-                <div class="container-custom">
-                    <div class="w-100">
-                        <div class="download-div text-white">
-                            <p> We recommend using the following images of two bills, November bill as the last month
-                                and
-                                December bill as the current month. Download the two images and then insert them within
-                                the
-                                two inputs.
+        <div class="d-flex justify-content-center mt-5">
+            <!-- download -->
+            <div class="download-div text-white">
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <h2 class="text-center text-white title-section">DOWNLOAD YOUR TEST BILLS</h2>
+                    <i class="fa-solid fa-circle-info ms-2 info-icon" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"></i>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="modal-body-text"> We recommend using the following images of two
+                                        bills, November bill as
+                                        the last month
+                                        and
+                                        December bill as the current month. Download the two images and then
+                                        insert them within
+                                        the
+                                        two inputs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a :href="'data:image/png;base64,' + base64_bill_november"
+                        download="guida-bolletta-enel-november.jpg" class="text-white download-bill-link text-center">
+                        <div class="title-test-bill pb-2">NOVEMBER BILL</div>
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                    </a>
+                    <a :href="'data:image/png;base64,' + base64_bill_december"
+                        download="guida-bolletta-enel-december.jpg"
+                        class="text-white download-bill-link text-center ms-5">
+                        <div class="title-test-bill pb-2">DECEMBER BILL</div>
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- upload -->
+            <div class="upload-div mb-3">
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <h2 class="text-center text-white title-section">UPLOAD YOUR BILLS</h2>
+                </div>
+
+                <div class="d-flex div-upload-bills">
+                    <!-- Previous Month Upload -->
+                    <div class="d-flex flex-column w-50 align-items-center justify-content-center">
+                        <div class="title-test-bill pb-2">LAST MONTH BILL</div>
+                        <label for="previousMonthInput" class="label">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                        </label>
+                        <input type="file" id="previousMonthInput" class="d-none"
+                            @change="event => onFileChange(event, 'previous')" accept="image/jpeg" />
+                        <div class="position-absolute">
+                            <div v-if="previousFileName" class="file-name text-white mt-2">
+                                {{ previousFileName }}
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary button-custom upload-button" @click="uploadPreviousMonthImage">
+                            Upload Last Month Bill
+                        </button>
+                        <div class="d-flex flex-column position-absolute align-items-center">
+                            <div v-if="previousUploadMessage" class="mt-2 message-error">
+                                <span class="text-border-white message-error-span"
+                                    :style="{ color: previousUploadMessageColor }">
+                                    {{ previousUploadMessage }}
+                                </span>
+                            </div>
+                            <div class="process-data-button d-flex align-items-center" v-if="previousUploadMessageColor === 'green'">
+                                <button class="btn btn-primary button-custom mt-1" @click="processPreviousMonthData">
+                                    Process Last Month Data
+                                </button>
+                                <div v-if="isProcessingPrevious" class="spinner-border text-light ms-2" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            
+                            <div v-if="processPreviousMessage" :style="{ color: processPreviousMessageColor }"
+                                class="text-border-white text-center message-processed">
+                                {{ processPreviousMessage }}
+                            </div>
+                            <p v-if="errorMessage" style="color: red;" class="text-border-white text-center">
+                                {{ errorMessage }}
                             </p>
-                            <div>
-                                <ul>
-                                    <li>
-                                        <a :href="'data:image/png;base64,' + base64_bill_november"
-                                            download="guida-bolletta-enel-november.jpg"
-                                            class="text-white download-bill-link">
-                                            November Bill
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a :href="'data:image/png;base64,' + base64_bill_december"
-                                            download="guida-bolletta-enel-december.jpg"
-                                            class="text-white download-bill-link">
-                                            December Bill
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="upload-div">
-                            <h2 class="text-center text-white mb-5">UPLOAD YOUR BILLS</h2>
-                            <div class="d-flex">
-                                <!-- Previous Month Upload -->
-                                <div class="d-flex flex-column w-50 align-items-center justify-content-center">
-                                    <label for="previousMonthInput">
-                                        <i class="fa-solid fa-file-arrow-down"></i>
-                                    </label>
-                                    <input type="file" id="previousMonthInput" class="d-none"
-                                        @change="event => onFileChange(event, 'previous')" accept="image/jpeg" />
-                                    <div v-if="previousFileName" class="file-name text-white mt-2">
-                                        {{ previousFileName }}
-                                    </div>
-                                    <button class="btn btn-primary button-custom mt-3"
-                                        @click="uploadPreviousMonthImage">
-                                        Upload Last Month Bill
-                                    </button>
-                                    <div v-if="previousUploadMessage" class="mt-2 text-danger">
-                                        <span :style="{ color: previousUploadMessageColor }">
-                                            {{ previousUploadMessage }}
-                                        </span>
-                                    </div>
-                                    <div v-if="previousUploadMessageColor === 'green'">
-                                        <button class="btn btn-primary button-custom mt-1"
-                                            @click="processPreviousMonthData">
-                                            Process Last Month Data
-                                        </button>
-                                    </div>
-                                    <div v-if="isProcessingPrevious" class="spinner-border text-light mt-3"
-                                        role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                    <p v-if="processPreviousMessage" :style="{ color: processPreviousMessageColor }"
-                                        class="text-center mt-5">
-                                        {{ processPreviousMessage }}
-                                    </p>
-                                    <p v-if="errorMessage" style="color: red;" class="text-center mt-5">{{ errorMessage
-                                        }}
-                                    </p>
-                                </div>
-
-                                <!-- Current Month Upload  -->
-                                <div class="d-flex flex-column w-50 align-items-center justify-content-center">
-                                    <label for="currentMonthInput">
-                                        <i class="fa-solid fa-file-arrow-down"></i>
-                                    </label>
-                                    <input type="file" id="currentMonthInput" class="d-none"
-                                        @change="event => onFileChange(event, 'current')" accept="image/jpeg" />
-                                    <div v-if="currentFileName" class="file-name text-white mt-2">
-                                        {{ currentFileName }}
-                                    </div>
-                                    <button class="btn btn-primary button-custom mt-3" @click="uploadCurrentMonthImage">
-                                        Upload Current Month Bill
-                                    </button>
-                                    <div v-if="currentUploadMessage" class="mt-2 text-danger">
-                                        <span :style="{ color: currentUploadMessageColor }">
-                                            {{ currentUploadMessage }}
-                                        </span>
-                                    </div>
-                                    <div v-if="currentUploadMessageColor === 'green'">
-                                        <button class="btn btn-primary mt-1 button-custom"
-                                            @click="processCurrentMonthData">
-                                            Process Current Month Data
-                                        </button>
-                                    </div>
-                                    <div v-if="isProcessingCurrent" class="spinner-border text-light mt-3"
-                                        role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                    <p v-if="processCurrentMessage" :style="{ color: processCurrentMessageColor }"
-                                        class="text-center mt-5">
-                                        {{ processCurrentMessage }}
-                                    </p>
-                                    <p v-if="errorMessage" style="color: red;" class="text-center mt-5">{{ errorMessage
-                                        }}
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    <div class="d-flex flex-column align-items-center justify-content-center mt-5">
-                        <router-link v-if="previousMonthProcessed && currentMonthProcessed"
-                            :to="{ name: 'receive-token', query: { address: this.$route.query.address, idbill_1: previousUploadId, idbill_2: currentUploadId } }"
-                            class="btn btn-primary button-custom">
-                            Claim your token page
-                        </router-link>
+                    <!-- Current Month Upload  -->
+                    <div class="d-flex flex-column w-50 align-items-center justify-content-center">
+                        <div class="title-test-bill pb-2">CURRENT MONTH BILL</div>
+                        <label for="currentMonthInput" class="label">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                        </label>
+                        <input type="file" id="currentMonthInput" class="d-none"
+                            @change="event => onFileChange(event, 'current')" accept="image/jpeg" />
+                        <div class="position-absolute">
+                            <div v-if="currentFileName" class="file-name text-white mt-2">
+                                {{ currentFileName }}
+                            </div>
+                        </div>
+                        <button class="btn btn-primary button-custom upload-button" @click="uploadCurrentMonthImage">
+                            Upload Current Month Bill
+                        </button>
+                        <div class="d-flex flex-column position-absolute align-items-center">
+                            <div v-if="currentUploadMessage" class="mt-2 message-error">
+                                <span class="text-border-white message-error-span"
+                                    :style="{ color: currentUploadMessageColor }">
+                                    {{ currentUploadMessage }}
+                                </span>
+                            </div>
+                            <div class="process-data-button d-flex align-items-center" v-if="currentUploadMessageColor === 'green'">
+                                <button class="btn btn-primary mt-1 button-custom" @click="processCurrentMonthData">
+                                    Process Current Month Data
+                                </button>
+                                <div v-if="isProcessingCurrent" class="spinner-border text-light ms-2" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div v-if="processCurrentMessage" :style="{ color: processCurrentMessageColor }"
+                                class="text-center text-border-white message-processed">
+                                {{ processCurrentMessage }}
+                            </div>
+                            <p v-if="errorMessage" style="color: red;" class="text-border-white text-center">
+                                {{ errorMessage }}
+                            </p>
+                        </div>
                     </div>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center div-claim-page">
+                    <router-link v-if="previousMonthProcessed && currentMonthProcessed"
+                        :to="{ name: 'receive-token', query: { address: this.$route.query.address, idbill_1: previousUploadId, idbill_2: currentUploadId } }"
+                        class="btn btn-primary button-custom">
+                        Claim your token page
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -352,13 +375,55 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.25);
+
+.div-claim-page{
+    position: relative;
+    top: 190px;
+}
+
+.message-processed{
+    position:relative;
+    top: 220px;
+    font-family: 'Gagalin', sans-serif;
+}
+
+.width-div-general {
+    width: 600px;
+}
+
+.modal-body-text {
+    color: black;
+    font-family: "Quicksand", sans-serif;
+}
+
+.info-icon {
+    cursor: pointer;
+}
+
+.title-test-bill {
+    font-family: "Caveat", cursive;
+    color: white;
+}
+
+.title-section {
+    font-family: 'Gagalin', sans-serif;
+}
+
+.upload-button {
+    margin-top: 10px;
+    z-index: 10;
+}
+
+.message-error {
+    position: relative;
+    top: 150px;
+    color: red;
+}
+
+.message-error-span {
+    font-family: 'Gagalin', sans-serif;
+    position: relative;
+    top: 50px;
 }
 
 .button-custom {
@@ -435,13 +500,15 @@ export default {
     font-size: 15px;
 }
 
+.fa-file-arrow-up,
 .fa-file-arrow-down {
     color: white;
     font-size: 100px;
     cursor: pointer;
 }
 
-.fa-file-arrow-down:hover {
+.fa-file-arrow-down:hover,
+.fa-file-arrow-up:hover {
     color: #0F5AA9;
 }
 
@@ -460,9 +527,21 @@ export default {
 
 .download-div {
     font-family: "Quicksand", sans-serif;
+    width: 40%;
 }
 
-.upload-div {}
+.upload-div {
+    width: 60%;
+    border-left: 5px solid white;
+    min-height: 400px;
+}
+
+.upload-div,
+.download-div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
 
 .main {
     font-family: 'Gagalin', sans-serif;
@@ -474,5 +553,30 @@ export default {
 
 .file-name {
     font-family: "Quicksand", sans-serif;
+    position: relative;
+    top: 35px;
+}
+
+.label {
+    margin-bottom: 30px;
+    z-index: 10;
+}
+
+.text-border-white {
+    text-shadow: 0 0 2px #fff;
+}
+
+.div-upload-bills {
+    padding: 0 100px;
+}
+
+.process-data-button{
+    position: relative;
+    top: 210px;
+}
+
+.error-general{
+    position:relative;
+    top: 50px;
 }
 </style>

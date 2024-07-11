@@ -46,7 +46,6 @@ export default {
             }
         }
     },
-
 };
 
 </script>
@@ -71,29 +70,29 @@ export default {
             <div class="div-empty">
             </div>
         </nav>
-        <main class="d-flex flex-column justify-content-center align-items-center">
-            <div class="title">
-                <h1>WATER CREDIT</h1>
-            </div>
-            <div class="fs-2 slogan">Reduce, Save, Reward</div>
-            <div class="d-flex flex-column align-items-center">
-                <button class="btn btn-primary button-custom mt-4" @click="connectWallet" v-if="!walletAddress">
-                    Connect wallet
-                </button>
-                <div v-if="walletAddress" class="d-flex align-items-center mt-4">
-                    <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">
-                    <p id="wallet-address" class="m-0">
-                        {{ formatWalletAddress }}
-                    </p>
-                </div>
-                <p v-if="errorMessage" id="welcome_message">{{ errorMessage }}</p>
-                <!-- Optionally display error message -->
-                <br />
-                <router-link v-if="walletAddress" :to="{ name: 'upload-bill', query: { address: walletAddress } }">
-                    <button class="btn btn-primary button-custom">
-                        Upload Bill
+        <main class="container-fluid d-flex justify-content-center align-items-center">
+            <div class="row">
+                <h1 class="col-12 d-flex justify-content-center">WATER CREDIT</h1>
+                <div class="fs-2 slogan col-12 d-flex justify-content-center">Reduce, Save, Reward</div>
+                <div class="col-12 d-flex flex-column align-items-center">
+                    <button class="btn btn-primary button-custom mt-4" @click="connectWallet" v-if="!walletAddress">
+                        Connect wallet
                     </button>
-                </router-link>
+                    <div v-if="walletAddress" class="mt-4 d-flex align-items-center">
+                        <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">
+                        <p id="wallet-address" class="m-0">
+                            {{ formatWalletAddress }}
+                        </p>
+                    </div>
+                    <p v-if="errorMessage" id="welcome_message">{{ errorMessage }}</p>
+                    <!-- Optionally display error message -->
+                    <br />
+                    <router-link v-if="walletAddress" :to="{ name: 'upload-bill', query: { address: walletAddress } }">
+                        <button class="btn btn-primary button-custom">
+                            Upload Bills
+                        </button>
+                    </router-link>
+                </div>
             </div>
         </main>
     </div>

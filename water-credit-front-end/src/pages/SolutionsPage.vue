@@ -69,8 +69,8 @@ export default {
             </div>
 
         </nav>
-        <div>
-            <div class="title">
+        <div class="d-flex justify-content-center w-100">
+            <div class="title mt-5">
                 <h1>SOLUTIONS</h1>
             </div>
         </div>
