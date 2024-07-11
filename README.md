@@ -11,7 +11,7 @@
 > <li>Minting the amount of tokens calculated in the user's wallet. </li>
 > <ul><br/>
 
-## Deployed Token Address
+# Deployed Token Address
 <br/>
 <table>
   <tr>
@@ -30,7 +30,18 @@
   <tr>
 </table><br/>
 
-## Usage
+# Architecture
+<img src="./docs/CreditWater_StructureOfProject.png" width="500" heigth="500" style="display: block; margin-left: auto; margin-right: auto;" />
+The application architecture includes four interdependent layers:<br/>
+<ul>
+<li><b>Front-end</b>: structured with multiple frameworks, the layer interfaces directly with the user;<br/></li>
+<li><b>Backend</b>: managed with Express.js, the layer implements business logic and data processing;<br/></li>
+<li><b>Database</b>: The layer in question is essential for storing data. To improve the scalability and availability of data in the first phase, we chose to use and implement MongoDB;<br/></li>
+<li><b>Integration</b>: In this layer the artificial intelligence model used is called "CohereForAI/c4ai-command-r-plus" and is used for data extraction;<br/></li>
+<li><b>Integration</b>: The second level of integration involves direct connection to the Solana blockchain to be able to carry out on-chain operations such as token minting, liquidity pools and staking.<br/></li>
+</ul>
+
+# Usage
 WaterCredit uses different projects for implement the functionalities that described in the first section of this file.
 For configure and use correctly them you must follow the following steps: <br/>
 
