@@ -31,7 +31,7 @@
 </table><br/>
 
 # Architecture
-<img src="./docs/CreditWater_StructureOfProject.png" width="500" heigth="500" style="display: block; margin-left: auto; margin-right: auto;" />
+<img src="./docs/WaterCredit_StructureOfProject.png" width="500" heigth="500" style="display: block; margin-left: auto; margin-right: auto;" />
 The application architecture includes four interdependent layers:<br/>
 <ul>
 <li><b>Front-end</b>: structured with multiple frameworks, the layer interfaces directly with the user;<br/></li>
