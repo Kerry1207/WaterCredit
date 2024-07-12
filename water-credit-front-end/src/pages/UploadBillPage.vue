@@ -540,7 +540,6 @@ export default {
 .download-div {
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
 }
 
 .main {

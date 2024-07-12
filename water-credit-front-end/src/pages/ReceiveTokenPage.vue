@@ -10,7 +10,8 @@ export default {
             associatedAccountMessage: '',
             transactionLink: '',
             transactionId: '',
-            isLoading: false
+            isLoading: false,
+            tokensClaimed: false
         };
     },
     computed: {
@@ -42,18 +43,19 @@ export default {
                 });
 
                 if (response.status === 200 && response.data.status === 'success') {
-                    this.message = `You have received ${response.data.amount} tokens.`;
+                    this.message = `You have received ${response.data.amount} tokens!`;
                     this.messageColor = 'green';
                     this.associatedAccountMessage = 'An associated account has been created, and tokens have been sent to it.';
                     this.transactionLink = `https://explorer.solana.com/tx/${response.data.transaction}?cluster=devnet`;
                     this.transactionId = response.data.transaction;
+                    this.tokensClaimed = true;
                 } else {
-                    this.message = 'Error calculating tokens. Please try again.';
+                    this.message = 'Error calculating tokens. Please try again!';
                     this.messageColor = 'red';
                 }
             } catch (error) {
                 console.error("Error claiming tokens:", error);
-                this.message = 'Error calculating tokens. Please try again.';
+                this.message = 'Error calculating tokens. Please try again!';
                 this.messageColor = 'red';
             } finally {
                 this.isLoading = false;
@@ -85,16 +87,22 @@ export default {
             </div>
         </nav>
         <div class="d-flex flex-column align-items-center justify-content-center main">
-            <div class="btn btn-primary button-custom" @click="claimTokens">Claim your tokens</div>
-            <div v-if="isLoading" class="spinner-border text-light mt-3" role="status">
+            <div v-if="!tokensClaimed" class="btn btn-primary button-custom" @click="claimTokens">Claim your tokens
+            </div>
+            <div v-if="isLoading" class="spinner-border text-light mt-4" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
-            <div v-if="message" :style="{ color: messageColor }" class="mt-5">{{ message }}</div>
+            <div v-if="message" :style="{ color: messageColor }" class="mt-5 mb-2 message-done text-border-white">{{
+                    message
+                }}</div>
             <div v-if="message && messageColor === 'green'">
-                <div class="text-center" :style="{ color: 'green' }">{{ associatedAccountMessage }}</div>
-                <div class="mt-3 text-center">
-                    <p class="text-white">Transaction Hash: {{ transactionId }}</p>
-                    <a class="text-white" :href="transactionLink" target="_blank">See transaction on Solana Explorer</a>
+                <div class="text-center associated-wallet-message text-border-white" :style="{ color: 'green' }">{{
+                    associatedAccountMessage }}</div>
+                <div class="mt-5 text-center">
+                    <p class="text-white hash-message">Transaction Hash: {{ transactionId }}</p>
+                    <a class="text-white explorer-message mt-3" :href="transactionLink" target="_blank">See transaction
+                        on
+                        Solana Explorer</a>
                 </div>
             </div>
         </div>
@@ -103,6 +111,20 @@ export default {
 
 
 <style scoped lang="scss">
+.associated-wallet-message,
+.explorer-message {
+    font-size: 25px;
+}
+
+.hash-message {
+    font-size: 20px;
+}
+
+.message-done {
+    color: white;
+    font-size: 50px;
+}
+
 .receive-token {
     background-image: url('../assets/background.jpg');
     background-repeat: no-repeat;
@@ -115,7 +137,7 @@ export default {
 .button-custom {
     background-color: white;
     color: #0F5AA9;
-    padding: 12px 25px;
+    padding: 12px 30px;
     border-radius: 30px;
     font-family: 'Gagalin', sans-serif;
     border: white;
@@ -195,5 +217,13 @@ export default {
     font-family: 'Gagalin', sans-serif;
     height: calc(100vh - 100px);
 
+}
+
+.title-section {
+    font-family: 'Gagalin', sans-serif;
+}
+
+.text-border-white {
+    text-shadow: 0 0 2px #fff;
 }
 </style>
