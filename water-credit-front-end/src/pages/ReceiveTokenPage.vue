@@ -36,7 +36,7 @@ export default {
                 const idbill_1 = this.$route.query.idbill_1;
                 const idbill_2 = this.$route.query.idbill_2;
 
-                const response = await axios.post('http://localhost:3000/calculateToken', {
+                const response = await axios.post(import.meta.env.VITE_BACK_END_ENDPOINT.concat('/calculateToken'), {
                     address: walletAddress,
                     idbill_1: idbill_1,
                     idbill_2: idbill_2
