@@ -71,8 +71,8 @@ export default {
         </nav>
         <div class="d-flex justify-content-center">
             <div class="d-flex flex-column align-items-center justify-content-center w-100 px-4">
-                <div class="title mt-3">
-                    <h1 class="text-center pb-2">ABOUT US</h1>
+                <div class="title mt-2">
+                    <h1 class="text-center">ABOUT US</h1>
                     <p class="paragraph">
                         Water Credit is a startup focused on using blockchain technology to tackle the issue of water
                         scarcity. Our aim is to promote sustainability by encouraging and recognizing water conservation
@@ -88,106 +88,181 @@ export default {
                     <div class="text-center fs-4"> <strong>Our Team</strong></div>
                     <div class="container">
                         <div class="row">
-                            <div class="col"><img class="w-100" src="../assets/team-francesco.png" alt="francesco">
+                            <div class="col">
+                                <img class="w-100" src="../assets/team-antonio.png" alt="antonio">
+                                <div class="div-description">
+                                    <i class="fa-solid fa-circle-info me-3 info-icon" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal"></i>
+                                    <a target="_blank" href="https://www.linkedin.com/in/antonio-carito-17493019b/"><i
+                                            class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title fs-5" id="exampleModalLabel"><strong>Antonio
+                                                            Carito - Software Developer</strong></h3>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Antonio brings extensive experience in blockchain development and
+                                                        smart
+                                                        contract
+                                                        programming. His expertise is crucial in building the core
+                                                        technological
+                                                        infrastructure
+                                                        of Water Credit.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                            <div class="col"><img class="w-100" src="../assets/team-francesco.png" alt="francesco">
+                            <div class="col">
+                                <img class="w-100" src="../assets/team-samuele.png" alt="samuele">
+                                <div class="div-description">
+                                    <i class="fa-solid fa-circle-info me-3 info-icon" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal1"></i>
+                                    <a target="_blank" href="https://www.linkedin.com/in/samuele-passiatore-dev/"><i
+                                            class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title fs-5" id="exampleModalLabel1"><strong>Samuele
+                                                            Passiatore - Software Developer</strong></h3>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Samuele's skills in full-stack development are essential in
+                                                        creating the
+                                                        user-friendly
+                                                        interface and robust backend systems of Water Credit.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                            <div class="col"><img class="w-100" src="../assets/team-francesco.png" alt="francesco">
+                            <div class="col">
+                                <img class="w-100" src="../assets/team-aiman.png" alt="aiman">
+                                <div class="div-description">
+                                    <i class="fa-solid fa-circle-info me-3 info-icon" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal2"></i>
+                                    <a target="_blank" href="https://www.linkedin.com/in/aiman-hamdouni/"><i
+                                            class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title fs-5" id="exampleModalLabel2"><strong>Aiman
+                                                            Hamdouni - Industrial Engineer</strong></h3>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Aiman's background in industrial engineering provides valuable
+                                                        insights into
+                                                        water
+                                                        usage
+                                                        in industrial settings, helping to tailor our solution for
+                                                        business users.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                            <div class="col"><img class="w-100" src="../assets/team-francesco.png" alt="francesco">
+                            <div class="col">
+                                <img class="w-100" src="../assets/team-francesco.png" alt="francesco">
+                                <div class="div-description">
+                                    <i class="fa-solid fa-circle-info me-3 info-icon" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal3"></i>
+                                    <a target="_blank" href="https://www.linkedin.com/in/francescofantinelli/"><i
+                                            class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal3" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title fs-5" id="exampleModalLabel3">
+                                                        <strong>Francesco Fantinelli - Compliance Analyst</strong>
+                                                    </h3>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <p>Francesco ensures that Water Credit operates within regulatory
+                                                        frameworks,
+                                                        managing
+                                                        legal
+                                                        compliance and risk assessment for the platform.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                            <div class="col"><img class="w-100" src="../assets/team-francesco.png" alt="francesco">
+                            <div class="col">
+                                <img class="w-100" src="../assets/team-nicholas.png" alt="nicholas">
+                                <div class="div-description">
+                                    <i class="fa-solid fa-circle-info me-3 info-icon" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal4"></i>
+                                    <a target="_blank" href="https://www.linkedin.com/in/nicholas-ferrato-856020131/"><i
+                                            class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal4" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel4" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title fs-5" id="exampleModalLabel4">
+                                                        <strong>Nicholas Ferrato - Consultant</strong>
+                                                    </h3>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>
+                                                        Nicholas provides strategic guidance on business development and
+                                                        partnerships,
+                                                        helping to
+                                                        scale Water Credit's impact.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
+
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <ul>
-            <li>
-                <div class="d-flex align-items-center">
-                    <div class="div-description">
-                        <strong>Antonio Carito - Software Developer</strong>
-                        <p>Antonio brings extensive experience in blockchain development and smart
-                            contract
-                            programming. His expertise is crucial in building the core technological
-                            infrastructure
-                            of Water Credit.</p>
-                    </div>
-                    <div class="div-image"><img class="w-100" src="../assets/team-francesco.png" alt="francesco">
-                    </div>
 
-                </div>
-
-            </li>
-            <li>
-                <div class="d-flex align-items-center">
-                    <div class="div-description">
-                        <strong>Samuele Passiatore - Software Developer</strong>
-                        <p>Samuele's skills in full-stack development are essential in creating the
-                            user-friendly
-                            interface and robust backend systems of Water Credit.</p>
-                    </div>
-                    <div class="div-image"><img class="w-100" src="../assets/team-francesco.png" alt="samuele">
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li>
-                <div class="d-flex align-items-center">
-                    <div class="div-description">
-                        <strong>Aiman Hamdouni - Industrial Engineer</strong>
-                        <p>Aiman's background in industrial engineering provides valuable insights into
-                            water
-                            usage
-                            in industrial settings, helping to tailor our solution for business users.
-                        </p>
-                    </div>
-                    <div class="div-image"><img class="w-100" src="../assets/team-francesco.png" alt="aiman">
-                    </div>
-
-                </div>
-
-            </li>
-
-
-
-            <li>
-                <div class="d-flex align-items-center">
-                    <div class="div-description">
-                        <strong>Francesco Fantinelli - Compliance Analyst</strong>
-                        <p>Francesco ensures that Water Credit operates within regulatory frameworks,
-                            managing
-                            legal
-                            compliance and risk assessment for the platform.</p>
-                    </div>
-                    <div class="div-image"><img class="w-100" src="../assets/team-francesco.png" alt="francesco">
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li>
-                <div class="d-flex align-items-center">
-                    <div class="div-description">
-                        <strong>Nicholas Ferrato - Consultant</strong>
-                        <p>Nicholas provides strategic guidance on business development and
-                            partnerships,
-                            helping to
-                            scale Water Credit's impact.</p>
-                    </div>
-                    <div class="div-image"><img class="w-100" src="../assets/team-francesco.png" alt="nicholas">
-                    </div>
-
-                </div>
-
-            </li>
-
-        </ul>
     </div>
 
 
@@ -195,12 +270,23 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.fa-linkedin {
+    color: white;
+}
+
+.info-icon {
+    cursor: pointer;
+}
+
 .card {
     width: 20%;
 }
 
 .div-description {
-    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
 }
 
 .div-image {
@@ -301,5 +387,15 @@ export default {
     font-family: 'Gagalin', sans-serif;
     border: white;
     width: 165px;
+}
+
+.modal-title {
+    color: #0F5AA9;
+}
+
+.modal-body {
+    color: black;
+    font-family: "Quicksand", sans-serif;
+    font-size: 18px;
 }
 </style>
