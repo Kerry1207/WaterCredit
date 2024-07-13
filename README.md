@@ -82,6 +82,7 @@ After made previous steps, the next one is to create '.env' file for set the fol
 > MINT_TOKEN_ADDRESS=[token_address_Solana_Testnet]<br/>
 > MOCK_AI=OFF<br/>
 > MOCK_NUMBER_ITEM='1'<br/>
+> MONGODB_URL=[Your MongoDB url]<br/>
 > <br/>
 <br/>
 The paremeters MOCK_AI and MOCK_NUMBER_ITEM work together when the first parameter set to "ON" value. That means that it will mock the response from AI.
@@ -119,7 +120,7 @@ This configuration file must contain the following keys with related values:
 > APPLICATION_PORT=[Replace with your port]<br/>
 > ENDPOINT_PY=http://localhost<br/>
 > PY_PORT=[Replace with the port that currently running the water-credit-ai project]<br/>
-> MONGODB_URL=[Your URL mongoDB]<br/>
+> MONGODB_URL=[Your MongoDB url]<br/>
 > <br/>
 
 Then for running ExpressJS server, not in reloading mode, you can run the following command:

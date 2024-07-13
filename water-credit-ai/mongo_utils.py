@@ -1,11 +1,15 @@
+import os
+
 import pymongo
 from bson import ObjectId
+from dotenv import load_dotenv
 
 
 class MongoUtils:
 
     def __init__(self):
-        self.client = pymongo.MongoClient("mongodb+srv://wastewater:aIXKFguliXkkx8ru@wastewater.w1y2ocu.mongodb.net/")
+        load_dotenv()
+        self.client = pymongo.MongoClient(os.getenv("MONGODB_URL"))
         self.database = self.client["wastewater"]
         self.collection = self.database["bill"]
 
