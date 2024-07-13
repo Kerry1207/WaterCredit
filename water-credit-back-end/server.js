@@ -71,7 +71,7 @@ app.post('/uploadImage', async function(req, res) {
         fs.unlinkSync('./temp/output.pdf');
         let idElement = await mongoDbUtility.registerData(solanaAddress, uploadDateParam, typeImageParam, base64PDFString);
         res.status(200).json({ status: 'success', id: idElement });
-    } catch(exception) {
+    } catch(error) {
         console.error("[uploadImage] Error message: " + error);
         res.status(200).json({ status: 'error', code: utility.getCodeFromErrorMessage(error.toString()) });
     }
