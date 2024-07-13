@@ -84,11 +84,11 @@ After made previous steps, the next one is to create '.env' file for set the fol
 > MOCK_NUMBER_ITEM='1'<br/>
 > MONGODB_URL=[Your MongoDB url]<br/>
 > <br/>
-<br/>
-The paremeters MOCK_AI and MOCK_NUMBER_ITEM work together when the first parameter set to "ON" value. That means that it will mock the response from AI.
-The value of MOCK_NUMBER_ITEM must be initialized to '1'.
-For HuggingChat, you must sign up on HuggingChat website and into browser do a right click, click on "Inspect" and go to "Application" tab.
-At this point you can see the key like that "hf-chat" and related value. You must copy that value and put inside '.env' file into HF_CHAT key.<br/><br/>
+> <br/>
+> The parameters MOCK_AI and MOCK_NUMBER_ITEM work together when the first parameter set to "ON" value. That means that it will mock the response from AI.
+> The value of MOCK_NUMBER_ITEM must be initialized to '1'.
+> For HuggingChat, you must sign up on HuggingChat website and into browser do a right click, click on "Inspect" and go to "Application" tab.
+> At this point you can see the key like that "hf-chat" and related value. You must copy that value and put inside '.env' file into HF_CHAT key.<br/><br/>
 
 ⚠️ <u><b>We remember that this project it's only for academic study. We didn't take any responsability of damages that you could make with this code on HuggingChat website.</b></u> ⚠️
 
@@ -112,13 +112,14 @@ Move into back-end folder project and run this command for install the dependenc
 npm install
 ```
 
-At this point you must create '.dotenv' file for set some settings for launch correctly the server.
+At this point you must create '.env' file for set some settings for launch correctly the server.
 This configuration file must contain the following keys with related values:
 
 > <br/>
 > ENDPOINT=http://localhost<br/>
 > APPLICATION_PORT=[Replace with your port]<br/>
 > ENDPOINT_PY=http://localhost<br/>
+> FRONT_END_ENDPOINT=[Replace with front end endpoint + port]<br/>
 > PY_PORT=[Replace with the port that currently running the water-credit-ai project]<br/>
 > MONGODB_URL=[Your MongoDB url]<br/>
 > <br/>
@@ -148,6 +149,13 @@ Move into front-end folder project and run this command for install the dependen
 ```sh
 npm install
 ```
+
+At this point you must create '.env' file for set some settings for launch correctly the server.
+This configuration file must contain the following keys with related values:
+
+> <br/>
+> VUE_APP_BACK_END_ENDPOINT=[Your back end endpoint]<br/>
+> <br/>
 
 For running Vue.js server, you can run the following command:
 
