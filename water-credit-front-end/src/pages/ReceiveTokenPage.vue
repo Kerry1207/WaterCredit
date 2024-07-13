@@ -74,10 +74,13 @@ export default {
                 <span class="fs-2 name-token">WCT</span>
             </div>
             <div class="d-flex justify-content-center align-items-center div-links">
-                <router-link class="navbar-link" :to="{ name: 'solutions' }">Solutions</router-link>
-                <router-link class="navbar-link padding-left" :to="{ name: 'features' }">Features</router-link>
-                <router-link class="navbar-link padding-left" :to="{ name: 'about-us' }">About Us</router-link>
-                <router-link class="last-navbar-link padding-left" :to="{ name: 'resources' }">Resources</router-link>
+                <router-link class="navbar-link"
+                    :to="{ name: 'solutions', query: { address: this.$route.query.address } }">Solutions</router-link>
+                <router-link class="navbar-link padding-left"
+                    :to="{ name: 'features', query: { address: this.$route.query.address } }">Features</router-link>
+                <router-link class="last-navbar-link padding-left"
+                    :to="{ name: 'about-us', query: { address: this.$route.query.address } }">About Us</router-link>
+
             </div>
             <div class="div-empty d-flex align-items-center">
                 <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">

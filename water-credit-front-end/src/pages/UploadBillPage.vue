@@ -225,10 +225,8 @@ export default {
                     :to="{ name: 'solutions', query: { address: this.$route.query.address } }">Solutions</router-link>
                 <router-link class="navbar-link padding-left"
                     :to="{ name: 'features', query: { address: this.$route.query.address } }">Features</router-link>
-                <router-link class="navbar-link padding-left"
-                    :to="{ name: 'about-us', query: { address: this.$route.query.address } }">About Us</router-link>
                 <router-link class="last-navbar-link padding-left"
-                    :to="{ name: 'resources', query: { address: this.$route.query.address } }">Resources</router-link>
+                    :to="{ name: 'about-us', query: { address: this.$route.query.address } }">About Us</router-link>
             </div>
             <div class="div-empty d-flex align-items-center">
                 <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">

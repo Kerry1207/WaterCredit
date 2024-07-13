@@ -62,10 +62,8 @@ export default {
                     :to="{ name: 'solutions', query: { address: this.walletAddress } }">Solutions</router-link>
                 <router-link class="navbar-link padding-left"
                     :to="{ name: 'features', query: { address: this.walletAddress } }">Features</router-link>
-                <router-link class="navbar-link padding-left"
-                    :to="{ name: 'about-us', query: { address: this.walletAddress } }">About Us</router-link>
                 <router-link class="last-navbar-link padding-left"
-                    :to="{ name: 'resources', query: { address: this.walletAddress } }">Resources</router-link>
+                    :to="{ name: 'about-us', query: { address: this.walletAddress } }">About Us</router-link>
             </div>
             <div class="div-empty">
             </div>
