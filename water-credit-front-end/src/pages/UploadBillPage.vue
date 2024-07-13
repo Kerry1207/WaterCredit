@@ -36,17 +36,27 @@ export default {
         ...mapGetters(['getWalletAddress']),
         formatWalletAddress() {
             if (this.$route.query.address) {
-                const firstChars = this.$route.query.address.substring(0, 8);
-                const lastChars = this.$route.query.address.substring(this.$route.query.address.length - 8);
+                const firstChars = this.$route.query.address.substring(0, 6);
+                const lastChars = this.$route.query.address.substring(this.$route.query.address.length - 6);
                 return `${firstChars}...${lastChars}`;
             } else {
                 return '';
             }
         }
     },
+    mounted() {
+        // Show the modal when the component is mounted
+        const modalElement = document.getElementById('exampleModal');
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+    },
     methods: {
         goToHomePage() {
             this.$router.push({ name: 'home' });
+        },
+        logOut() {
+            this.$router.push({ name: 'home' });
+            this.walletConnected = false;
         },
         onFileChange(event, monthType) {
             const file = event.target.files[0];
@@ -211,16 +221,21 @@ export default {
                 <span class="fs-2 name-token">WCT</span>
             </div>
             <div class="d-flex justify-content-center align-items-center div-links">
-                <router-link class="navbar-link" :to="{ name: 'solutions' }">Solutions</router-link>
-                <router-link class="navbar-link padding-left" :to="{ name: 'features' }">Features</router-link>
-                <router-link class="navbar-link padding-left" :to="{ name: 'about-us' }">About Us</router-link>
-                <router-link class="last-navbar-link padding-left" :to="{ name: 'resources' }">Resources</router-link>
+                <router-link class="navbar-link"
+                    :to="{ name: 'solutions', query: { address: this.$route.query.address } }">Solutions</router-link>
+                <router-link class="navbar-link padding-left"
+                    :to="{ name: 'features', query: { address: this.$route.query.address } }">Features</router-link>
+                <router-link class="navbar-link padding-left"
+                    :to="{ name: 'about-us', query: { address: this.$route.query.address } }">About Us</router-link>
+                <router-link class="last-navbar-link padding-left"
+                    :to="{ name: 'resources', query: { address: this.$route.query.address } }">Resources</router-link>
             </div>
             <div class="div-empty d-flex align-items-center">
                 <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">
-                <p id="wallet-address" class="m-0">
+                <p id="wallet-address" class="m-0 pe-3">
                     {{ formatWalletAddress }}
                 </p>
+                <button class="button-custom-out btn btn-danger" @click="logOut">Log out</button>
             </div>
         </nav>
 
@@ -301,15 +316,16 @@ export default {
                                     {{ previousUploadMessage }}
                                 </span>
                             </div>
-                            <div class="process-data-button d-flex align-items-center" v-if="previousUploadMessageColor === 'green'">
+                            <div class="process-data-button d-flex align-items-center"
+                                v-if="previousUploadMessageColor === 'green'">
                                 <button class="btn btn-primary button-custom mt-1" @click="processPreviousMonthData">
                                     Process Last Month Data
                                 </button>
                                 <div v-if="isProcessingPrevious" class="spinner-border text-light ms-2" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                                    <span class="visually-hidden">Loading...</span>
                                 </div>
                             </div>
-                            
+
                             <div v-if="processPreviousMessage" :style="{ color: processPreviousMessageColor }"
                                 class="text-border-white text-center message-processed">
                                 {{ processPreviousMessage }}
@@ -343,12 +359,13 @@ export default {
                                     {{ currentUploadMessage }}
                                 </span>
                             </div>
-                            <div class="process-data-button d-flex align-items-center" v-if="currentUploadMessageColor === 'green'">
+                            <div class="process-data-button d-flex align-items-center"
+                                v-if="currentUploadMessageColor === 'green'">
                                 <button class="btn btn-primary mt-1 button-custom" @click="processCurrentMonthData">
                                     Process Current Month Data
                                 </button>
                                 <div v-if="isProcessingCurrent" class="spinner-border text-light ms-2" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                                    <span class="visually-hidden">Loading...</span>
                                 </div>
                             </div>
                             <div v-if="processCurrentMessage" :style="{ color: processCurrentMessageColor }"
@@ -375,14 +392,23 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.button-custom-out {
+    background-color: white;
+    color: red;
+    padding: 12px 50px;
+    border-radius: 30px;
+    font-family: 'Gagalin', sans-serif;
+    border: white;
+    width: 165px;
+}
 
-.div-claim-page{
+.div-claim-page {
     position: relative;
     top: 190px;
 }
 
-.message-processed{
-    position:relative;
+.message-processed {
+    position: relative;
     top: 220px;
     font-family: 'Gagalin', sans-serif;
 }
@@ -486,7 +512,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .padding-left {
@@ -497,7 +523,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .fa-file-arrow-up,
@@ -569,13 +595,13 @@ export default {
     padding: 0 100px;
 }
 
-.process-data-button{
+.process-data-button {
     position: relative;
     top: 210px;
 }
 
-.error-general{
-    position:relative;
+.error-general {
+    position: relative;
     top: 50px;
 }
 </style>

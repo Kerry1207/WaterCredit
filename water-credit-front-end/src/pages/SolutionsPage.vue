@@ -69,27 +69,77 @@ export default {
             </div>
 
         </nav>
-        <div class="d-flex justify-content-center w-100">
-            <div class="title mt-5">
-                <h1>SOLUTIONS</h1>
+        <div class="d-flex justify-content-center w-100 px-4">
+            <div class="title mt-3">
+                <h1 class="text-center pb-2">SOLUTIONS</h1>
+                <p class="paragraph">Water Credit presents an innovative solution to the pressing issue of water
+                    conservation by leveraging blockchain technology. This platform aims to incentivize both businesses
+                    and individuals
+                    to reduce their water usage through a system of tokenized rewards. The operation of Water Credit is
+                    straightforward yet effective. Users begin by uploading their water bills from the current and
+                    previous month onto the platform. An AI model then analyzes these bills to extract detailed water
+                    consumption data. The system compares the water usage between the two months to identify and
+                    calculate any reduction in consumption. Based on the amount of water saved, users are rewarded with
+                    WCT (Water Credit Token) tokens, which can be held, staked, or sold on decentralized exchanges
+                    (DEX), offering flexibility and tangible incentives for users.
+                    <br><br>
+                    One of the most significant advantages of using blockchain technology is the transparency it offers.
+                    All transactions and savings data are recorded on the blockchain, making them visible and verifiable
+                    by all participants. This openness fosters trust and accountability within the system. Additionally,
+                    advanced cryptography ensures that user data is secure. The immutable nature of blockchain records
+                    adds an extra layer of protection, preventing tampering and unauthorized access. By tokenizing water
+                    savings, Water Credit provides a powerful motivation for users to engage in ongoing conservation
+                    efforts. This approach gamifies the process, making it not only beneficial but also engaging for
+                    participants.
+                    <br><br>
+                    Water Credit specifically targets regions with significant water stress, such as Italy, where
+                    reducing water consumption is critical. By rewarding conservation efforts, the platform aims to
+                    foster a cultural shift towards more sustainable water use practices. For multi-unit buildings where
+                    individual water metering may not be available, Water Credit offers a solution that includes
+                    property managers. These managers can upload aggregate water bills and use multi-signature wallets
+                    to distribute rewards equitably among residents, ensuring that everyone in the building can
+                    participate and benefit from the conservation efforts.
+                    <br><br>
+                    The economic model of the WCT token is designed to mirror real-world water savings, creating a
+                    robust and sustainable incentive system. The price of WCT tokens correlates with the overall water
+                    savings achieved by users. As more water is conserved, the token's value increases. The supply and
+                    demand within the liquidity pool impact the token's value. Active engagement from users helps
+                    maintain token stability and liquidity. The number of active users on the platform influences the
+                    stability and liquidity of the token, ensuring that increased participation drives further value and
+                    conservation efforts.
+                    <br><br>
+                    This model establishes a virtuous cycle where heightened conservation efforts lead to higher token
+                    values, which in turn motivate more users to join the platform and participate in water-saving
+                    activities. By aligning economic incentives with environmental goals, Water Credit effectively
+                    promotes sustainable water usage and addresses the urgent need for conservation in water-stressed
+                    areas.
+                </p>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
+.paragraph {
+    padding: 0 80px;
+}
+
 .solution {
     background-image: url('../assets/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    overflow-y: auto;
 }
 
 .title {
     color: white;
-    font-size: 80px;
     font-family: 'Gagalin', sans-serif;
     margin-bottom: 0;
+}
+
+.title p {
+    font-family: "Quicksand", sans-serif;
 }
 
 .div-logo {
@@ -141,7 +191,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .padding-left {
@@ -152,7 +202,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .button-custom {

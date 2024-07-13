@@ -69,15 +69,44 @@ export default {
             </div>
 
         </nav>
-        <div class="d-flex justify-content-center">
-            <div class="title mt-5">
-                <h1>RESOURCES</h1>
+
+        <div class="d-flex justify-content-center w-100 px-4">
+            <div class="title mt-3">
+                <h1 class="text-center pb-4">RESOURCES</h1>
+                <div class="d-flex">
+                    <div class="d-flex mx-5">
+                        <a href="" download="" class="text-white download-bill-link text-center">
+                            <div class="title-test-bill pb-2 fs-5">slides-project.pdf</div>
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                        </a>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
+.download-bill-link {
+    text-decoration: none;
+}
+
+.fa-file-arrow-down {
+    color: white;
+    font-size: 100px;
+    cursor: pointer;
+}
+
+.fa-file-arrow-down:hover {
+    color: #0F5AA9;
+}
+
+.title-test-bill {
+    font-family: "Caveat", cursive;
+    color: white;
+}
+
 .resources {
     background-image: url('../assets/background.jpg');
     background-repeat: no-repeat;
@@ -141,7 +170,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .padding-left {
@@ -152,7 +181,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .button-custom {

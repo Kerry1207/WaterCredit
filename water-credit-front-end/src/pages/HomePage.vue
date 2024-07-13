@@ -129,7 +129,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .padding-left {
@@ -140,7 +140,7 @@ export default {
     text-decoration: none;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .div-logo {
