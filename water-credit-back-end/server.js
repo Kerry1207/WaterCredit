@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 
 const port = process.env.APPLICATION_PORT;
 const fullDomain = process.env.ENDPOINT.concat(':').concat(process.env.APPLICATION_PORT);
-const pyFullDomain = process.env.ENDPOINT_PY.concat(':').concat(process.env.PY_PORT);
+const pyFullDomain = process.env.ENDPOINT_PY;
 
 app.listen(port, () => {
     console.log("Application started at: " + fullDomain);
