@@ -13,13 +13,6 @@
 > <li>Minting the amount of tokens calculated in the user's wallet. </li>
 > <ul><br/>
 
-# Demo
-<p align="center">
-<video style="width: 80%; heigth: 80%; padding-bottom: 2%; display: block; margin-right: auto; margin-left: auto;" controls="1" controlslist="nodownload nofullscreen noremoteplayback">
-  <source src="./docs/WaterCredit_Demo.mp4" type="video/mp4">
-</video>
-</p>
-
 # Deployed Token Address
 
 <br/>
@@ -43,7 +36,7 @@
 # Architecture
 
 <p align="center">
-  <img src="./docs/WaterCredit_StructureOfProject.png" style="width: 30%; height: 30%; display: block; margin-right: auto; margin-left: auto;" />
+  <img src="./docs/WaterCredit_StructureOfProject.png" style="width: 50%; height: 50%; display: block; margin-right: auto; margin-left: auto;" />
 </p>
 <br/>
 The application architecture includes four interdependent layers:<br/>
