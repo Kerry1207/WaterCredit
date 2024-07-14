@@ -1,6 +1,7 @@
 <h1 align="center">💧 Water Credit 💧</h1>
 
-🏠 Hosted on: <a href="#"></a><br/>
+🏠 Hosted on: <a href="#">https://watercredit-front-end.onrender.com/</a><br/>
+<span style="background-color: #990000"><b>NOTE: Since the site is hosted on Render with free pricing, consequently the various layers of the project (front-end, back-end, ai) will be cut if not used within a certain time limit.</b></span>
 
 > <br/><b>Water credit</b> is a project uses blockchain technology to promote water saving among companies and individuals.<br/>
 > The following demo of the project proposes users to test the following features:
@@ -11,6 +12,13 @@
 > <li>Calculating the amount of tokens based on the comparison and relative savings between the two bills; </li>
 > <li>Minting the amount of tokens calculated in the user's wallet. </li>
 > <ul><br/>
+
+# Demo
+<p align="center">
+<video style="width: 80%; heigth: 80%; padding-bottom: 2%; display: block; margin-right: auto; margin-left: auto;" controls="1" controlslist="nodownload nofullscreen noremoteplayback">
+  <source src="./docs/WaterCredit_Demo.mp4" type="video/mp4">
+</video>
+</p>
 
 # Deployed Token Address
 
@@ -34,9 +42,9 @@
 
 # Architecture
 
-<div style="display: flex; justify-content: center;">
-  <img src="./docs/WaterCredit_StructureOfProject.png" width="500" heigth="500"  />
-</div>
+<p align="center">
+  <img src="./docs/WaterCredit_StructureOfProject.png" style="width: 30%; height: 30%; display: block; margin-right: auto; margin-left: auto;" />
+</p>
 <br/>
 The application architecture includes four interdependent layers:<br/>
 <ul>
@@ -84,11 +92,11 @@ After made previous steps, the next one is to create '.env' file for set the fol
 > MOCK_NUMBER_ITEM='1'<br/>
 > MONGODB_URL=[Your MongoDB url]<br/>
 > <br/>
-> <br/>
-> The parameters MOCK_AI and MOCK_NUMBER_ITEM work together when the first parameter set to "ON" value. That means that it will mock the response from AI.
-> The value of MOCK_NUMBER_ITEM must be initialized to '1'.
-> For HuggingChat, you must sign up on HuggingChat website and into browser do a right click, click on "Inspect" and go to "Application" tab.
-> At this point you can see the key like that "hf-chat" and related value. You must copy that value and put inside '.env' file into HF_CHAT key.<br/><br/>
+<br/>
+The parameters MOCK_AI and MOCK_NUMBER_ITEM work together when the first parameter set to "ON" value. That means that it will mock the response from AI.
+The value of MOCK_NUMBER_ITEM must be initialized to '1'.
+For HuggingChat, you must sign up on HuggingChat website and into browser do a right click, click on "Inspect" and go to "Application" tab.
+At this point you can see the key like that "hf-chat" and related value. You must copy that value and put inside '.env' file into HF_CHAT key.<br/><br/>
 
 ⚠️ <u><b>We remember that this project it's only for academic study. We didn't take any responsability of damages that you could make with this code on HuggingChat website.</b></u> ⚠️
 
