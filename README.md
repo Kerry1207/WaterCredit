@@ -36,7 +36,7 @@
 # Architecture
 
 <p align="center">
-  <img src="./docs/WaterCredit_StructureOfProject.png" style="width: 50%; height: 50%; display: block; margin-right: auto; margin-left: auto;" />
+  <img src="./docs/WaterCredit_StructureOfProject.png" style="width: 90%; height: 90%; display: block; margin-right: auto; margin-left: auto;" />
 </p>
 <br/>
 The application architecture includes four interdependent layers:<br/>

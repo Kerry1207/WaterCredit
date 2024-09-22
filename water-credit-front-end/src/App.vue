@@ -4,7 +4,7 @@ import UploadBillPage from './pages/UploadBillPage.vue';
 import ReceiveTokenPage from './pages/ReceiveTokenPage.vue'
 
 export default {
-  name: 'Waste Water',
+  name: 'Water Credit',
   components: { HomePage, UploadBillPage, ReceiveTokenPage },
 };
 
