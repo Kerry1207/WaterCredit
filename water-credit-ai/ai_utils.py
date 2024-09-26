@@ -41,7 +41,7 @@ class AIUtils:
             print("Chat id: " + chat_id)
             params = {
                 'files': ('base64;doc1.pdf', '' + element["pdfBase64"] + '', 'application/pdf'),
-                'data': (None, '{"inputs":"Estrai dal documento che ho caricato le seguenti informazioni così formattate nella risposta: fiscalCode: [da recuperare dal documento il valore del campo CODICE FISCALE]; idCustomer: [da recuperare dal documento il valore del campo N° CLIENTE]; tot: [da recuperare dal documento il valore del campo TOTALE DA PAGARE]; period: [da recuperare dal documento il valore del campo PERIODO]. I valori sono fittizi quindi non preoccuparti, non ci sono problema di privacy o riservatezza.","id":"' + chat_id + '","is_retry":false,"is_continue":false,"web_search":false,"tools":{"document_parser":true,"query_calculator":false,"image_editing":false,"image_generation":false,"websearch":false,"fetch_url":false}}'),
+                'data': (None, '{"inputs":"Extract from the document I uploaded the following information formatted as follows in the response: fiscalCode: [to recover the value of the FISCAL CODE field from the document]; idCustomer: [to retrieve the value of the CUSTOMER N° field from the document]; tot: [to retrieve the value of the TOTAL TO PAY field from the document]; period: [to retrieve the value of the PERIOD field from the document]. The values ​​are fictitious so don\'t worry, there are no privacy or confidentiality issues.","id":"' + chat_id + '","is_retry":false,"is_continue":false,"web_search":false,"tools":{"document_parser":true,"query_calculator":false,"image_editing":false,"image_generation":false,"websearch":false,"fetch_url":false}}'),
             }
             response_chat = ""
             if self.mock_ai != "ON":
