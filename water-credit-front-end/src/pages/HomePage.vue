@@ -54,10 +54,11 @@ export default {
     <div class="home">
         <nav class="navbar px-4">
             <div class="d-flex align-items-center div-logo">
-                <img src=" ../../public/Image_blur.png" alt="logo" class="logo-image" @click="reloadPage">
-                <span class="fs-2 name-token">WCT</span>
+                <div @click="reloadPage">
+                    <img src="../assets/Logo White@3.png" alt="logo" class="logo-image">
+                </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center div-links">
+            <!-- <div class="d-flex justify-content-center align-items-center div-links">
                 <router-link class="navbar-link"
                     :to="{ name: 'solutions', query: { address: this.walletAddress } }">Solutions</router-link>
                 <router-link class="navbar-link padding-left"
@@ -66,12 +67,22 @@ export default {
                     :to="{ name: 'about-us', query: { address: this.walletAddress } }">About Us</router-link>
             </div>
             <div class="div-empty">
-            </div>
+            </div> -->
         </nav>
         <main class="container-fluid d-flex justify-content-center align-items-center">
             <div class="row">
-                <h1 class="col-12 d-flex justify-content-center">WATER CREDIT</h1>
-                <div class="fs-2 slogan col-12 d-flex justify-content-center">Reduce, Save, Reward</div>
+                <div>
+
+                </div>
+
+                <div class="d-flex justify-content-center text-white motto">
+                    <span class="pe-5 fs-1">REDUCE</span>
+                    <span class="pe-5 fs-1">SAVE</span>
+                    <span class="fs-1">REWARD</span>
+                </div>
+
+                <div class="slogan col-12 d-flex justify-content-center pt-2">Blockchain and AI solution to fight the
+                    global water emergency</div>
                 <div class="col-12 d-flex flex-column align-items-center">
                     <button class="btn btn-primary button-custom mt-4" @click="connectWallet" v-if="!walletAddress">
                         Connect wallet
@@ -82,8 +93,8 @@ export default {
                             {{ formatWalletAddress }}
                         </p>
                     </div>
-                    <p v-if="errorMessage" id="welcome_message">{{ errorMessage }}</p>
-                    <!-- Optionally display error message -->
+                    <p v-if="errorMessage" id="welcome_message" class="pt-5 text-white">{{ errorMessage }}</p>
+
                     <br />
                     <router-link v-if="walletAddress" :to="{ name: 'upload-bill', query: { address: walletAddress } }">
                         <button class="btn btn-primary button-custom">
@@ -93,13 +104,30 @@ export default {
                 </div>
             </div>
         </main>
+        <footer class="d-flex col-12 justify-content-between align-items-center px-4">
+            <span class="text-white">©2024 Watercredit</span>
+            <div>
+                <a href="https://www.linkedin.com/company/watercredit"><img src="../assets/linkedin-logo-linkedin.png"
+                        alt="linkedin" class="me-2 icon-social"></a>
+                <a href="https://x.com/WaterCredit_"><img src="../assets/Exclude.png" alt="twitter"
+                        class="icon-social"></a>
+            </div>
+        </footer>
     </div>
 
 </template>
 
 <style scoped lang="scss">
+.icon-social {
+    width: 25px;
+}
+
+.motto {
+    font-weight: normal;
+}
+
 .home {
-    background-image: url('../assets/background.jpg');
+    background-image: url('../assets/Background_wct.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -112,13 +140,13 @@ export default {
 }
 
 .logo-image {
-    width: 80px;
+    width: 250px;
     cursor: pointer;
 }
 
 .name-token {
     color: white;
-    font-family: "Caveat", cursive;
+    font-family: "Teachers", sans-serif;
 }
 
 .navbar-link {
@@ -126,7 +154,7 @@ export default {
     padding-right: 15px;
     text-decoration: none;
     color: white;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     font-size: 18px;
 }
 
@@ -137,7 +165,7 @@ export default {
 .last-navbar-link {
     text-decoration: none;
     color: white;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     font-size: 18px;
 }
 
@@ -156,21 +184,22 @@ export default {
 h1 {
     color: white;
     font-size: 80px;
-    font-family: 'Gagalin', sans-serif;
+    font-family: "Teachers", sans-serif;
     margin-bottom: 0;
 }
 
 .button-custom {
     background-color: white;
     color: #0F5AA9;
-    padding: 12px 50px;
-    border-radius: 30px;
-    font-family: 'Gagalin', sans-serif;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-family: "Teachers", sans-serif;
     border: white;
+    font-size: 14px;
 }
 
 main {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 150px);
 }
 
 .logo-wallet {
@@ -179,13 +208,13 @@ main {
 }
 
 .slogan {
-    font-family: "Caveat", cursive;
-    font-weight: bold;
+    font-family: "Teachers", sans-serif;
     color: white;
+    font-size: 14px;
 }
 
 #wallet-address {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     color: white;
     font-weight: bold;
 }

@@ -217,30 +217,32 @@ export default {
     <div class="upload-bill">
         <nav class="navbar px-4">
             <div class="d-flex align-items-center div-logo">
-                <img src=" ../../public/Image_blur.png" alt="logo" class="logo-image" @click="goToHomePage">
-                <span class="fs-2 name-token">WCT</span>
+                <div @click="goToHomePage">
+                    <img src="../assets/Logo color@3.png" alt="logo" class="logo-image">
+                </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center div-links">
+            <!-- <div class="d-flex justify-content-center align-items-center div-links">
                 <router-link class="navbar-link"
                     :to="{ name: 'solutions', query: { address: this.$route.query.address } }">Solutions</router-link>
                 <router-link class="navbar-link padding-left"
                     :to="{ name: 'features', query: { address: this.$route.query.address } }">Features</router-link>
                 <router-link class="last-navbar-link padding-left"
                     :to="{ name: 'about-us', query: { address: this.$route.query.address } }">About Us</router-link>
-            </div>
+            </div> -->
             <div class="div-empty d-flex align-items-center">
-                <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">
+                <img src="../assets/Frame.png" alt="logo-wallet" class="logo-wallet pe-2">
                 <p id="wallet-address" class="m-0 pe-3">
                     {{ formatWalletAddress }}
                 </p>
-                <button class="button-custom-out btn btn-danger" @click="logOut">Log out</button>
+                <button class="button-custom-out btn btn-danger divv" @click="logOut">Logout</button>
             </div>
         </nav>
 
-        <div class="d-flex justify-content-center mt-5">
+        <div class="d-flex justify-content-center mt-5 main-upload">
             <!-- download -->
             <div class="download-div text-white">
-                <div class="d-flex justify-content-center align-items-center mb-3">
+                <div class="d-flex justify-content-center align-items-center mb-3 download-block">
+                    <i class="fa-regular fa-file"></i>
                     <h2 class="text-center text-white title-section">DOWNLOAD YOUR TEST BILLS</h2>
                     <i class="fa-solid fa-circle-info ms-2 info-icon" data-bs-toggle="modal"
                         data-bs-target="#exampleModal"></i>
@@ -269,16 +271,15 @@ export default {
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a :href="'data:image/png;base64,' + base64_bill_november"
-                        download="template-bill-november.jpg" class="text-white download-bill-link text-center">
+                    <a :href="'data:image/png;base64,' + base64_bill_november" download="template-bill-november.jpg"
+                        class="text-white download-bill-link text-center">
                         <div class="title-test-bill pb-2">NOVEMBER BILL</div>
-                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <i class="fa-solid fa-cloud-arrow-down fs-2"></i>
                     </a>
-                    <a :href="'data:image/png;base64,' + base64_bill_december"
-                        download="template-bill-december.jpg"
+                    <a :href="'data:image/png;base64,' + base64_bill_december" download="template-bill-december.jpg"
                         class="text-white download-bill-link text-center ms-5">
                         <div class="title-test-bill pb-2">DECEMBER BILL</div>
-                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <i class="fa-solid fa-cloud-arrow-down fs-2"></i>
                     </a>
                 </div>
             </div>
@@ -286,15 +287,16 @@ export default {
             <!-- upload -->
             <div class="upload-div mb-3">
                 <div class="d-flex justify-content-center align-items-center mb-3">
+                    <i class="fa-regular fa-file text-white"></i>
                     <h2 class="text-center text-white title-section">UPLOAD YOUR BILLS</h2>
                 </div>
 
                 <div class="d-flex div-upload-bills">
                     <!-- Previous Month Upload -->
-                    <div class="d-flex flex-column w-50 align-items-center justify-content-center">
+                    <div class="d-flex flex-column w-50 align-items-center justify-content-center text-white">
                         <div class="title-test-bill pb-2">LAST MONTH BILL</div>
                         <label for="previousMonthInput" class="label">
-                            <i class="fa-solid fa-file-arrow-up"></i>
+                            <i class="fa-solid fa-cloud-arrow-up fs-2"></i>
                         </label>
                         <input type="file" id="previousMonthInput" class="d-none"
                             @change="event => onFileChange(event, 'previous')" accept="image/jpeg" />
@@ -304,8 +306,9 @@ export default {
                             </div>
                         </div>
 
-                        <button class="btn btn-primary button-custom upload-button" @click="uploadPreviousMonthImage">
-                            Upload Last Month Bill
+                        <button :class="['upload-button', { 'disabled-button': !currentMonthImage }]"
+                            @click="uploadCurrentMonthImage" :disabled="!currentMonthImage">
+                            Upload
                         </button>
                         <div class="d-flex flex-column position-absolute align-items-center">
                             <div v-if="previousUploadMessage" class="mt-2 message-error">
@@ -335,10 +338,10 @@ export default {
                     </div>
 
                     <!-- Current Month Upload  -->
-                    <div class="d-flex flex-column w-50 align-items-center justify-content-center">
+                    <div class="d-flex flex-column w-50 align-items-center justify-content-center text-white">
                         <div class="title-test-bill pb-2">CURRENT MONTH BILL</div>
                         <label for="currentMonthInput" class="label">
-                            <i class="fa-solid fa-file-arrow-up"></i>
+                            <i class="fa-solid fa-cloud-arrow-up fs-2"></i>
                         </label>
                         <input type="file" id="currentMonthInput" class="d-none"
                             @change="event => onFileChange(event, 'current')" accept="image/jpeg" />
@@ -347,8 +350,9 @@ export default {
                                 {{ currentFileName }}
                             </div>
                         </div>
-                        <button class="btn btn-primary button-custom upload-button" @click="uploadCurrentMonthImage">
-                            Upload Current Month Bill
+                        <button :class="['upload-button', { 'disabled-button': !currentMonthImage }]"
+                            @click="uploadCurrentMonthImage" :disabled="!currentMonthImage">
+                            Upload
                         </button>
                         <div class="d-flex flex-column position-absolute align-items-center">
                             <div v-if="currentUploadMessage" class="mt-2 message-error">
@@ -385,19 +389,41 @@ export default {
                 </div>
             </div>
         </div>
+        <footer class="d-flex col-12 justify-content-between align-items-center px-4">
+            <span class="text-white">©2024 Watercredit</span>
+            <div>
+                <a href="https://www.linkedin.com/company/watercredit"><img src="../assets/linkedin-logo-linkedin.png"
+                        alt="linkedin" class="me-2 icon-social"></a>
+                <a href="https://x.com/WaterCredit_"><img src="../assets/Exclude.png" alt="twitter"
+                        class="icon-social"></a>
+            </div>
+        </footer>
 
     </div>
 </template>
 
 <style scoped lang="scss">
+.fa-cloud-arrow-up,
+.fa-cloud-arrow-down {
+    cursor: pointer;
+}
+
+.main-upload {
+    height: calc(100vh - 190px);
+}
+
 .button-custom-out {
-    background-color: white;
-    color: red;
-    padding: 12px 50px;
-    border-radius: 30px;
-    font-family: 'Gagalin', sans-serif;
-    border: white;
-    width: 165px;
+    background-color: transparent;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-family: "Teachers", sans-serif;
+}
+
+.divv {
+    border-width: 5px;
+    border-style: solid;
+    border-color: red blue green orange;
 }
 
 .div-claim-page {
@@ -408,7 +434,7 @@ export default {
 .message-processed {
     position: relative;
     top: 220px;
-    font-family: 'Gagalin', sans-serif;
+    font-family: "Teachers", sans-serif;
 }
 
 .width-div-general {
@@ -417,7 +443,7 @@ export default {
 
 .modal-body-text {
     color: black;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
 }
 
 .info-icon {
@@ -425,17 +451,23 @@ export default {
 }
 
 .title-test-bill {
-    font-family: "Caveat", cursive;
+    font-family: "Teachers", sans-serif;
     color: white;
 }
 
 .title-section {
-    font-family: 'Gagalin', sans-serif;
+    font-family: "Teachers", sans-serif;
+    font-size: 10px;
 }
 
 .upload-button {
-    margin-top: 10px;
-    z-index: 10;
+    background-color: white;
+    color: #0F5AA9;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-family: "Teachers", sans-serif;
+    border: white;
+    font-size: 14px;
 }
 
 .message-error {
@@ -445,7 +477,7 @@ export default {
 }
 
 .message-error-span {
-    font-family: 'Gagalin', sans-serif;
+    font-family: "Teachers", sans-serif;
     position: relative;
     top: 50px;
 }
@@ -454,19 +486,18 @@ export default {
     background-color: white;
     color: #0F5AA9;
     padding: 12px 25px;
-    border-radius: 30px;
-    font-family: 'Gagalin', sans-serif;
+    font-family: "Teachers", sans-serif;
     border: white;
 }
 
 .button-custom-nocolor {
     padding: 12px 25px;
     border-radius: 30px;
-    font-family: 'Gagalin', sans-serif;
+    font-family: "Teachers", sans-serif;
 }
 
 .upload-bill {
-    background-image: url('../assets/background.jpg');
+    background-color: black;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -479,7 +510,7 @@ export default {
 }
 
 #wallet-address {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     color: white;
     font-weight: bold;
 }
@@ -490,7 +521,7 @@ export default {
 }
 
 .logo-image {
-    width: 80px;
+    width: 250px;
     cursor: pointer;
 }
 
@@ -501,7 +532,7 @@ export default {
 
 .name-token {
     color: white;
-    font-family: "Caveat", cursive;
+    font-family: "Teachers", sans-serif;
 }
 
 .navbar-link {
@@ -509,7 +540,7 @@ export default {
     padding-right: 15px;
     text-decoration: none;
     color: white;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     font-size: 18px;
 }
 
@@ -520,7 +551,7 @@ export default {
 .last-navbar-link {
     text-decoration: none;
     color: white;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     font-size: 18px;
 }
 
@@ -550,13 +581,12 @@ export default {
 }
 
 .download-div {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     width: 40%;
 }
 
 .upload-div {
     width: 60%;
-    border-left: 5px solid white;
     min-height: 400px;
 }
 
@@ -567,7 +597,7 @@ export default {
 }
 
 .main {
-    font-family: 'Gagalin', sans-serif;
+    font-family: "Teachers", sans-serif;
 }
 
 .download-bill-link {
@@ -575,7 +605,7 @@ export default {
 }
 
 .file-name {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Teachers", sans-serif;
     position: relative;
     top: 35px;
 }
