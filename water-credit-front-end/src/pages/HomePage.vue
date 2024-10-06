@@ -58,16 +58,6 @@ export default {
                     <img src="../assets/Logo White@3.png" alt="logo" class="logo-image">
                 </div>
             </div>
-            <!-- <div class="d-flex justify-content-center align-items-center div-links">
-                <router-link class="navbar-link"
-                    :to="{ name: 'solutions', query: { address: this.walletAddress } }">Solutions</router-link>
-                <router-link class="navbar-link padding-left"
-                    :to="{ name: 'features', query: { address: this.walletAddress } }">Features</router-link>
-                <router-link class="last-navbar-link padding-left"
-                    :to="{ name: 'about-us', query: { address: this.walletAddress } }">About Us</router-link>
-            </div>
-            <div class="div-empty">
-            </div> -->
         </nav>
         <main class="container-fluid d-flex justify-content-center align-items-center">
             <div class="row">
@@ -76,9 +66,9 @@ export default {
                 </div>
 
                 <div class="d-flex justify-content-center text-white motto">
-                    <span class="pe-5 fs-1">REDUCE</span>
-                    <span class="pe-5 fs-1">SAVE</span>
-                    <span class="fs-1">REWARD</span>
+                    <span class="padding-right-custom">REDUCE</span>
+                    <span class="padding-right-custom">SAVE</span>
+                    <span>REWARD</span>
                 </div>
 
                 <div class="slogan col-12 d-flex justify-content-center pt-2">Blockchain and AI solution to fight the
@@ -88,7 +78,7 @@ export default {
                         Connect wallet
                     </button>
                     <div v-if="walletAddress" class="mt-4 d-flex align-items-center">
-                        <img src="../assets/new-phantom.jpg" alt="logo-wallet" class="logo-wallet pe-2">
+                        <img src="../assets/Frame.png" alt="logo-wallet" class="logo-wallet pe-2">
                         <p id="wallet-address" class="m-0">
                             {{ formatWalletAddress }}
                         </p>
@@ -123,7 +113,15 @@ export default {
 }
 
 .motto {
-    font-weight: normal;
+    font-size: 4rem;
+    font-family: "Teachers", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.padding-right-custom {
+    padding-right: 4rem;
 }
 
 .home {
@@ -195,7 +193,7 @@ h1 {
     border-radius: 8px;
     font-family: "Teachers", sans-serif;
     border: white;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 main {
@@ -203,14 +201,14 @@ main {
 }
 
 .logo-wallet {
-    height: 50px;
+    height: 35px;
     border-radius: 50%;
 }
 
 .slogan {
     font-family: "Teachers", sans-serif;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #wallet-address {

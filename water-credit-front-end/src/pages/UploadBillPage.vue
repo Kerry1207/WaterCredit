@@ -221,14 +221,6 @@ export default {
                     <img src="../assets/Logo color@3.png" alt="logo" class="logo-image">
                 </div>
             </div>
-            <!-- <div class="d-flex justify-content-center align-items-center div-links">
-                <router-link class="navbar-link"
-                    :to="{ name: 'solutions', query: { address: this.$route.query.address } }">Solutions</router-link>
-                <router-link class="navbar-link padding-left"
-                    :to="{ name: 'features', query: { address: this.$route.query.address } }">Features</router-link>
-                <router-link class="last-navbar-link padding-left"
-                    :to="{ name: 'about-us', query: { address: this.$route.query.address } }">About Us</router-link>
-            </div> -->
             <div class="div-empty d-flex align-items-center">
                 <img src="../assets/Frame.png" alt="logo-wallet" class="logo-wallet pe-2">
                 <p id="wallet-address" class="m-0 pe-3">
@@ -243,7 +235,7 @@ export default {
             <div class="download-div text-white">
                 <div class="d-flex justify-content-center align-items-center mb-3 download-block">
                     <i class="fa-regular fa-file"></i>
-                    <h2 class="text-center text-white title-section">DOWNLOAD YOUR TEST BILLS</h2>
+                    <span class="text-center text-white title-section">DOWNLOAD TEST BILLS</span>
                     <i class="fa-solid fa-circle-info ms-2 info-icon" data-bs-toggle="modal"
                         data-bs-target="#exampleModal"></i>
                     <!-- Modal -->
@@ -288,7 +280,7 @@ export default {
             <div class="upload-div mb-3">
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <i class="fa-regular fa-file text-white"></i>
-                    <h2 class="text-center text-white title-section">UPLOAD YOUR BILLS</h2>
+                    <span class="text-center text-white title-section">UPLOAD YOUR BILLS</span>
                 </div>
 
                 <div class="d-flex div-upload-bills">
@@ -442,7 +434,7 @@ export default {
 }
 
 .modal-body-text {
-    color: black;
+    color: white;
     font-family: "Teachers", sans-serif;
 }
 
@@ -631,5 +623,15 @@ export default {
 .error-general {
     position: relative;
     top: 50px;
+}
+
+.modal-body,
+.modal-header {
+    background-color: black;
+    border: 1px solid blue;
+}
+
+.modal {
+    color: white;
 }
 </style>
