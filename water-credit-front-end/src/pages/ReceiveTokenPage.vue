@@ -92,7 +92,7 @@ export default {
             <div v-if="message" :style="{ color: messageColor }" class="mt-5 message-done text-border-white">{{
                     message
                 }}</div>
-            <div v-if="message && messageColor === 'green'">
+            <div v-if="message && messageColor === '#12ff77'">
                 <div class="text-center associated-wallet-message text-border-white" :style="{ color: 'white' }">{{
                     associatedAccountMessage }}</div>
                 <div class="mt-1 text-center">

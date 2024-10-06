@@ -235,8 +235,8 @@ export default {
             <div class="download-div text-white">
                 <div class="d-flex justify-content-center align-items-center mb-3 download-block">
                     <i class="fa-regular fa-file fs-3"></i>
-                    <span class="text-center title-section">DOWNLOAD TEST BILLS</span>
-                    <i class="fa-solid fa-circle-info ps-3 info-icon" data-bs-toggle="modal"
+                    <span class="text-center title-section fw-bold">DOWNLOAD TEST BILLS</span>
+                    <i class="fa-solid fa-circle-info ps-1 info-icon" data-bs-toggle="modal"
                         data-bs-target="#exampleModal"></i>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -275,7 +275,7 @@ export default {
             <div class="upload-div mb-3 upload-block">
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <i class="fa-regular fa-file fs-3"></i>
-                    <span class="text-center title-section">UPLOAD YOUR BILLS</span>
+                    <span class="text-center title-section fw-bold">UPLOAD YOUR BILLS</span>
                 </div>
 
                 <div class="d-flex div-upload-bills">
@@ -294,7 +294,7 @@ export default {
                         </div>
 
                         <button class="mt-3" :class="['upload-button', { 'disabled-button': !currentMonthImage }]"
-                            @click="uploadCurrentMonthImage" :disabled="!currentMonthImage">
+                            @click="uploadPreviousMonthImage" :disabled="!currentMonthImage">
                             Upload
                         </button>
                         <div class="d-flex flex-column position-absolute align-items-center">
@@ -413,6 +413,13 @@ export default {
     font-family: "Teachers", sans-serif;
 }
 
+.div-claim-page {
+    position: relative;
+    top: 190px;
+}
+
+
+
 .divv {
     border-width: 5px;
     border-style: solid;
@@ -453,16 +460,41 @@ export default {
     font-weight: bold;
 }
 
+.message-processed {
+    position: relative;
+    top: 170px;
+    font-family: "Teachers", sans-serif;
+}
 
+.message-error {
+    position: relative;
+    top: 133px;
+    color: red;
+}
 
+.message-error-span {
+    position: relative;
+}
 
+.file-name {
+    position: relative;
+    top: 35px;
+}
+
+.process-data-button {
+    position: relative;
+    top: 150px;
+}
 
 .button-custom {
     background-color: white;
     color: #0F5AA9;
-    padding: 12px 25px;
+    padding: 8px 15px;
     font-family: "Teachers", sans-serif;
     border: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .button-custom-nocolor {
@@ -594,8 +626,10 @@ export default {
     padding: 0 100px;
 }
 
-
-
+.error-general {
+    position: relative;
+    top: 50px;
+}
 
 .modal-body,
 .modal-header {
