@@ -634,4 +634,10 @@ export default {
 .modal {
     color: white;
 }
+
+.disabled-button {
+    background-color: rgb(51, 51, 51);
+    color: black;
+    font-weight: bold;
+}
 </style>
