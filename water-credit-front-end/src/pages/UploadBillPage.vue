@@ -173,7 +173,7 @@ export default {
             } else {
                 this.errorMessage = '';
                 this.previousUploadMessage = 'You need to upload a last month bill.';
-                this.currentUploadMessage = ''; // Clear the current message if necessary
+                this.currentUploadMessage = '';
             }
         },
         uploadCurrentMonthImage() {
@@ -182,7 +182,7 @@ export default {
             } else {
                 this.errorMessage = '';
                 this.currentUploadMessage = 'You need to upload a current month bill.';
-                this.previousUploadMessage = ''; // Clear the previous message if necessary
+                this.previousUploadMessage = '';
             }
         },
         processPreviousMonthData() {
@@ -230,13 +230,13 @@ export default {
             </div>
         </nav>
 
-        <div class="d-flex justify-content-center mt-5 main-upload">
+        <div class="d-flex justify-content-center main-upload">
             <!-- download -->
             <div class="download-div text-white">
                 <div class="d-flex justify-content-center align-items-center mb-3 download-block">
-                    <i class="fa-regular fa-file"></i>
-                    <span class="text-center text-white title-section">DOWNLOAD TEST BILLS</span>
-                    <i class="fa-solid fa-circle-info ms-2 info-icon" data-bs-toggle="modal"
+                    <i class="fa-regular fa-file fs-3"></i>
+                    <span class="text-center title-section">DOWNLOAD TEST BILLS</span>
+                    <i class="fa-solid fa-circle-info ps-3 info-icon" data-bs-toggle="modal"
                         data-bs-target="#exampleModal"></i>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -248,14 +248,9 @@ export default {
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p class="modal-body-text"> We recommend using the following images of two
-                                        bills, November bill as
-                                        the last month
-                                        and
-                                        December bill as the current month. Download the two images and then
-                                        insert them within
-                                        the
-                                        two inputs.
+                                    <p class="modal-body-text">We recommend using the following bill images: the
+                                        November bill as the previous month's bill and the December bill as the current
+                                        month's bill. Download the images and upload them into the respective fields.
                                     </p>
                                 </div>
                             </div>
@@ -277,10 +272,10 @@ export default {
             </div>
 
             <!-- upload -->
-            <div class="upload-div mb-3">
+            <div class="upload-div mb-3 upload-block">
                 <div class="d-flex justify-content-center align-items-center mb-3">
-                    <i class="fa-regular fa-file text-white"></i>
-                    <span class="text-center text-white title-section">UPLOAD YOUR BILLS</span>
+                    <i class="fa-regular fa-file fs-3"></i>
+                    <span class="text-center title-section">UPLOAD YOUR BILLS</span>
                 </div>
 
                 <div class="d-flex div-upload-bills">
@@ -293,12 +288,12 @@ export default {
                         <input type="file" id="previousMonthInput" class="d-none"
                             @change="event => onFileChange(event, 'previous')" accept="image/jpeg" />
                         <div class="position-absolute">
-                            <div v-if="previousFileName" class="file-name text-white mt-2">
+                            <div v-if="previousFileName" class="file-name text-white">
                                 {{ previousFileName }}
                             </div>
                         </div>
 
-                        <button :class="['upload-button', { 'disabled-button': !currentMonthImage }]"
+                        <button class="mt-3" :class="['upload-button', { 'disabled-button': !currentMonthImage }]"
                             @click="uploadCurrentMonthImage" :disabled="!currentMonthImage">
                             Upload
                         </button>
@@ -338,11 +333,11 @@ export default {
                         <input type="file" id="currentMonthInput" class="d-none"
                             @change="event => onFileChange(event, 'current')" accept="image/jpeg" />
                         <div class="position-absolute">
-                            <div v-if="currentFileName" class="file-name text-white mt-2">
+                            <div v-if="currentFileName" class="file-name text-white">
                                 {{ currentFileName }}
                             </div>
                         </div>
-                        <button :class="['upload-button', { 'disabled-button': !currentMonthImage }]"
+                        <button class="mt-3" :class="['upload-button', { 'disabled-button': !currentMonthImage }]"
                             @click="uploadCurrentMonthImage" :disabled="!currentMonthImage">
                             Upload
                         </button>
@@ -395,13 +390,19 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.title-section {
+    font-size: 13px;
+    padding-left: 8px;
+}
+
 .fa-cloud-arrow-up,
 .fa-cloud-arrow-down {
     cursor: pointer;
 }
 
 .main-upload {
-    height: calc(100vh - 190px);
+    height: calc(100vh - 150px);
+    padding-top: 180px;
 }
 
 .button-custom-out {
@@ -418,16 +419,9 @@ export default {
     border-color: red blue green orange;
 }
 
-.div-claim-page {
-    position: relative;
-    top: 190px;
-}
 
-.message-processed {
-    position: relative;
-    top: 220px;
-    font-family: "Teachers", sans-serif;
-}
+
+
 
 .width-div-general {
     width: 600px;
@@ -447,10 +441,6 @@ export default {
     color: white;
 }
 
-.title-section {
-    font-family: "Teachers", sans-serif;
-    font-size: 10px;
-}
 
 .upload-button {
     background-color: white;
@@ -460,19 +450,12 @@ export default {
     font-family: "Teachers", sans-serif;
     border: white;
     font-size: 14px;
+    font-weight: bold;
 }
 
-.message-error {
-    position: relative;
-    top: 150px;
-    color: red;
-}
 
-.message-error-span {
-    font-family: "Teachers", sans-serif;
-    position: relative;
-    top: 50px;
-}
+
+
 
 .button-custom {
     background-color: white;
@@ -588,10 +571,6 @@ export default {
     flex-direction: column;
 }
 
-.main {
-    font-family: "Teachers", sans-serif;
-}
-
 .download-bill-link {
     text-decoration: none;
 }
@@ -599,7 +578,7 @@ export default {
 .file-name {
     font-family: "Teachers", sans-serif;
     position: relative;
-    top: 35px;
+    top: 10px;
 }
 
 .label {
@@ -615,15 +594,8 @@ export default {
     padding: 0 100px;
 }
 
-.process-data-button {
-    position: relative;
-    top: 210px;
-}
 
-.error-general {
-    position: relative;
-    top: 50px;
-}
+
 
 .modal-body,
 .modal-header {
@@ -639,5 +611,19 @@ export default {
     background-color: rgb(51, 51, 51);
     color: black;
     font-weight: bold;
+}
+
+.btn-close {
+    background-color: blue;
+}
+
+.download-block,
+.upload-block {
+    color: rgb(51, 51, 51);
+}
+
+.fa-cloud-arrow-up:hover,
+.fa-cloud-arrow-down:hover {
+    color: rgb(51, 51, 51);
 }
 </style>
