@@ -122,12 +122,16 @@ export default {
 }
 
 .explorer-message {
-    color: white;
+    background-color: white;
+    color: #0F5AA9;
     padding: 8px 15px;
     border-radius: 8px;
     font-family: "Teachers", sans-serif;
     font-size: 15px;
     font-weight: bold;
+}
+
+.explorer-message:hover {
     background-image: url("../assets/Gradient background.png");
     background-repeat: no-repeat;
     background-size: cover;
