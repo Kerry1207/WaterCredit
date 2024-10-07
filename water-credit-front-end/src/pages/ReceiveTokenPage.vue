@@ -165,6 +165,14 @@ export default {
     font-size: 15px;
 }
 
+.button-custom:hover {
+    background-image: url("../assets/Gradient background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    color: white;
+}
+
 .button-custom-nocolor {
     padding: 12px 25px;
     border-radius: 30px;
@@ -242,9 +250,5 @@ export default {
 
 .title-section {
     font-family: 'Gagalin', sans-serif;
-}
-
-.text-border-white {
-    text-shadow: 0 0 2px #fff;
 }
 </style>

@@ -75,7 +75,7 @@ export default {
                     global water emergency</div>
                 <div class="col-12 d-flex flex-column align-items-center">
                     <button class="btn btn-primary button-custom mt-4" @click="connectWallet" v-if="!walletAddress">
-                        Connect wallet
+                        Connect Wallet
                     </button>
                     <div v-if="walletAddress" class="mt-4 d-flex align-items-center">
                         <img src="../assets/Frame.png" alt="logo-wallet" class="logo-wallet pe-2">
@@ -194,6 +194,14 @@ h1 {
     font-family: "Teachers", sans-serif;
     border: white;
     font-size: 15px;
+    font-weight: bold;
+}
+
+.button-custom:hover {
+    background-image: url("../assets/Gradient background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
 }
 
 main {

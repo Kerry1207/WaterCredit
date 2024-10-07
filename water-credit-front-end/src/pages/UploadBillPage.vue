@@ -226,7 +226,7 @@ export default {
                 <p id="wallet-address" class="m-0 pe-3">
                     {{ formatWalletAddress }}
                 </p>
-                <button class="button-custom-out btn btn-danger divv" @click="logOut">Logout</button>
+                <button class="btn" @click="logOut"><img src="../assets/Buttons.png" alt="button-logout"></button>
             </div>
         </nav>
 
@@ -405,29 +405,10 @@ export default {
     padding-top: 180px;
 }
 
-.button-custom-out {
-    background-color: transparent;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-family: "Teachers", sans-serif;
-}
-
 .div-claim-page {
     position: relative;
     top: 190px;
 }
-
-
-
-.divv {
-    border-width: 5px;
-    border-style: solid;
-    border-color: red blue green orange;
-}
-
-
-
 
 
 .width-div-general {
@@ -449,7 +430,8 @@ export default {
 }
 
 
-.upload-button {
+.upload-button,
+.process-data-button {
     background-color: white;
     color: #0F5AA9;
     padding: 8px 15px;
@@ -458,6 +440,14 @@ export default {
     border: white;
     font-size: 14px;
     font-weight: bold;
+}
+
+.process-data-button:hover {
+    background-image: url("../assets/Gradient background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    color: white;
 }
 
 .message-processed {
@@ -482,8 +472,10 @@ export default {
 }
 
 .process-data-button {
+
     position: relative;
     top: 150px;
+    cursor: pointer;
 }
 
 .button-custom {
@@ -495,6 +487,14 @@ export default {
     border-radius: 8px;
     font-size: 14px;
     font-weight: bold;
+}
+
+.button-custom:hover {
+    background-image: url("../assets/Gradient background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    color: white;
 }
 
 .button-custom-nocolor {
@@ -618,9 +618,6 @@ export default {
     z-index: 10;
 }
 
-.text-border-white {
-    text-shadow: 0 0 2px #fff;
-}
 
 .div-upload-bills {
     padding: 0 100px;
@@ -634,7 +631,7 @@ export default {
 .modal-body,
 .modal-header {
     background-color: black;
-    border: 1px solid blue;
+    border: 1px solid #0038FF;
 }
 
 .modal {
@@ -648,7 +645,7 @@ export default {
 }
 
 .btn-close {
-    background-color: blue;
+    background-color: #0038FF;
 }
 
 .download-block,
