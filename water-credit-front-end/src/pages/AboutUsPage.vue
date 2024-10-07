@@ -84,7 +84,7 @@ export default {
                         <br>
                         <br>
                     </p>
-                    <div class="text-center fs-4"> <strong>Our Team</strong></div>
+                    <div class="text-center fs-2"> <strong>Our Team</strong></div>
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -217,45 +217,8 @@ export default {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div class="col">
-                                <img class="w-100" src="../assets/team-nicholas.png" alt="nicholas">
-                                <div class="div-description">
-                                    <i class="fa-solid fa-circle-info me-3 info-icon" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal4"></i>
-                                    <a target="_blank" href="https://www.linkedin.com/in/nicholas-ferrato-856020131/"><i
-                                            class="fa-brands fa-linkedin"></i>
-                                    </a>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal4" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel4" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h3 class="modal-title fs-5" id="exampleModalLabel4">
-                                                        <strong>Nicholas Ferrato - Consultant</strong>
-                                                    </h3>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>
-                                                        Nicholas provides strategic guidance on business development and
-                                                        partnerships,
-                                                        helping to
-                                                        scale Water Credit's impact.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -294,6 +257,7 @@ export default {
 
 .col {
     width: 20%;
+    padding: 40px;
 }
 
 .paragraph {

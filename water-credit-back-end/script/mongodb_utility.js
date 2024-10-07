@@ -28,10 +28,6 @@ async function connect() {
 }
 
 function createObj(solanaAddress, uploadDate, typeImage, pdfBase64) {
-    // NOTE: 
-    // Processed: 
-    // 0 = False
-    // 1 = True
     var obj = { address: solanaAddress, uploadDate: uploadDate, typeImage: typeImage, pdfBase64: pdfBase64, status: 0, processed: 0, fiscalCode: null, idCustomer: null, tot: null, period: null };
     return obj;
 }

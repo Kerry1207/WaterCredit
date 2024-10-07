@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const app = createApp(App);
 
-// ROUTER
 app.use(router);
 
 app.mount('#app');
