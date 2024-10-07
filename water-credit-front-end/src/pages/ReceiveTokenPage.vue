@@ -36,7 +36,7 @@ export default {
         async claimTokens() {
             this.isLoading = true;
             try {
-                const walletAddress = this.$route.query.address; // Retrieve wallet address from query parameter
+                const walletAddress = this.$route.query.address;
                 const idbill_1 = this.$route.query.idbill_1;
                 const idbill_2 = this.$route.query.idbill_2;
 

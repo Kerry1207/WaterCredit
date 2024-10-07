@@ -45,7 +45,6 @@ export default {
         }
     },
     mounted() {
-        // Show the modal when the component is mounted
         const modalElement = document.getElementById('exampleModal');
         const modal = new bootstrap.Modal(modalElement);
         modal.show();
@@ -65,7 +64,7 @@ export default {
                 const reader = new FileReader();
                 reader.onloadend = () => {
                     if (monthType === 'previous') {
-                        this.previousMonthImage = reader.result.split(',')[1]; // base64 string
+                        this.previousMonthImage = reader.result.split(',')[1];
                         this.previousFileName = file.name;
                     } else {
                         this.currentMonthImage = reader.result.split(',')[1];
@@ -161,9 +160,7 @@ export default {
             }
         },
         checkProcessingStatus() {
-            // Check if both months have been processed
             if (this.previousMonthProcessed && this.currentMonthProcessed) {
-                // Force DOM update to ensure button visibility
                 this.$forceUpdate();
             }
         },

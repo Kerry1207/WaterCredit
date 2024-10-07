@@ -1,5 +1,5 @@
 <h1 align="center">💧 Water Credit 💧</h1>
-
+<h2 align="center">🏆<b>Winner of MasterZxSolana Bootcamp in collaboration with Solana Foundation</b>🏆</h2>
 🏠 Hosted on: <a href="#">https://watercredit-front-end.onrender.com/</a><br/>
 <span style="background-color: #990000"><b>NOTE: Since the site is hosted on Render with free pricing, consequently the various layers of the project (front-end, back-end, ai) will be cut if not used within a certain time limit.</b></span>
 

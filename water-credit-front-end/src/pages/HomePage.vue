@@ -4,8 +4,8 @@ export default {
     name: 'HomePage',
     data() {
         return {
-            walletAddress: null, // Variable to store wallet address
-            errorMessage: '', // Optional: Add error message state if needed
+            walletAddress: null,
+            errorMessage: '',
         };
     },
     methods: {
@@ -16,19 +16,16 @@ export default {
             if ("solana" in window) {
                 try {
                     await window.solana.connect();
-
                     const provider = window.solana;
-                    this.walletAddress = provider.publicKey.toString(); // Store wallet address
-
-                    // Optionally clear any previous error message
+                    this.walletAddress = provider.publicKey.toString();
                     this.errorMessage = '';
                 } catch (error) {
                     console.error("Failed to connect to Solana wallet", error);
-                    this.errorMessage = "Failed to connect to wallet."; // Optionally display error message
+                    this.errorMessage = "Failed to connect to wallet.";
                 }
             } else {
                 console.error("Solana object not found in window.");
-                this.errorMessage = "Solana object not found in window."; // Optionally display error message
+                this.errorMessage = "Solana object not found in window.";
             }
         },
         reloadPage() {
