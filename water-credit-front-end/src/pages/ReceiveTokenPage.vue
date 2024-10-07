@@ -129,6 +129,7 @@ export default {
     font-family: "Teachers", sans-serif;
     font-size: 15px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .explorer-message:hover {
