@@ -29,6 +29,10 @@ export default {
         goToHomePage() {
             this.$router.push({ name: 'home' });
         },
+        logOut() {
+            this.$router.push({ name: 'home' });
+            this.walletConnected = false;
+        },
         async claimTokens() {
             this.isLoading = true;
             try {
@@ -79,7 +83,8 @@ export default {
                 <p id="wallet-address" class="m-0 pe-3">
                     {{ formatWalletAddress }}
                 </p>
-                <button class="button-custom-out btn btn-danger divv" @click="logOut">Logout</button>
+                <button class="btn btn-logout" @click="logOut"><img src="../assets/Buttons.png"
+                        alt="button-logout"></button>
             </div>
         </nav>
 
@@ -108,6 +113,10 @@ export default {
 
 
 <style scoped lang="scss">
+.btn-logout:active {
+    border: none;
+}
+
 .associated-wallet-message {
     font-size: 18px;
 }
@@ -128,12 +137,6 @@ export default {
     padding: 8px 15px;
     border-radius: 8px;
     font-family: "Teachers", sans-serif;
-}
-
-.divv {
-    border-width: 5px;
-    border-style: solid;
-    border-color: red blue green orange;
 }
 
 .hash-message {
@@ -163,6 +166,7 @@ export default {
     font-family: "Teachers", sans-serif;
     border: white;
     font-size: 15px;
+    font-weight: bold;
 }
 
 .button-custom:hover {

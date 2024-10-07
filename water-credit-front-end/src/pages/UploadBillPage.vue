@@ -226,7 +226,8 @@ export default {
                 <p id="wallet-address" class="m-0 pe-3">
                     {{ formatWalletAddress }}
                 </p>
-                <button class="btn" @click="logOut"><img src="../assets/Buttons.png" alt="button-logout"></button>
+                <button class="btn btn-logout" @click="logOut"><img src="../assets/Buttons.png"
+                        alt="button-logout"></button>
             </div>
         </nav>
 
@@ -390,6 +391,10 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.btn-logout:active {
+    border: none;
+}
+
 .title-section {
     font-size: 13px;
     padding-left: 8px;
