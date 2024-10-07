@@ -102,7 +102,7 @@ export default {
                     associatedAccountMessage }}</div>
                 <div class="mt-1 text-center">
                     <p class="hash-message mb-5">Transaction hash: {{ transactionId }}</p>
-                    <a class="text-white explorer-message mt-5" :href="transactionLink" target="_blank">See transaction
+                    <a class="explorer-message mt-5" :href="transactionLink" target="_blank">See transaction
                         on
                         Solana Explorer</a>
                 </div>
@@ -137,6 +137,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: center;
+    color: white;
 }
 
 .button-custom-out {

@@ -306,7 +306,7 @@ export default {
                                 </span>
                             </div>
                             <div class="process-data-button d-flex align-items-center"
-                                v-if="previousUploadMessageColor === 'green'">
+                                v-if="previousUploadMessageColor === '#00FF75'">
                                 <button class="btn btn-primary button-custom mt-1" @click="processPreviousMonthData">
                                     Process Last Month Data
                                 </button>
@@ -350,7 +350,7 @@ export default {
                                 </span>
                             </div>
                             <div class="process-data-button d-flex align-items-center"
-                                v-if="currentUploadMessageColor === 'green'">
+                                v-if="currentUploadMessageColor === '#00FF75'">
                                 <button class="btn btn-primary mt-1 button-custom" @click="processCurrentMonthData">
                                     Process Current Month Data
                                 </button>
