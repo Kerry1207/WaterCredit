@@ -98,11 +98,11 @@ export default {
                 if (response.status === 200 && response.data.status === 'success') {
                     if (monthType === 'previous') {
                         this.previousUploadMessage = `Last month bill upload successful`;
-                        this.previousUploadMessageColor = 'green';
+                        this.previousUploadMessageColor = '#00FF75';
                         this.previousUploadId = response.data.id;
                     } else {
                         this.currentUploadMessage = `Current month bill upload successful`;
-                        this.currentUploadMessageColor = 'green';
+                        this.currentUploadMessageColor = '#00FF75';
                         this.currentUploadId = response.data.id;
                     }
                     this.checkProcessingStatus();
@@ -132,11 +132,11 @@ export default {
                 if (response.status === 200 && response.data.status === 'success') {
                     if (monthType === 'previous') {
                         this.processPreviousMessage = `Data processing successful`;
-                        this.processPreviousMessageColor = 'green';
+                        this.processPreviousMessageColor = '#00FF75';
                         this.previousMonthProcessed = true;
                     } else {
                         this.processCurrentMessage = `Data processing successful`;
-                        this.processCurrentMessageColor = 'green';
+                        this.processCurrentMessageColor = '#00FF75';
                         this.currentMonthProcessed = true;
                     }
                 } else {
@@ -435,8 +435,7 @@ export default {
 }
 
 
-.upload-button,
-.process-data-button {
+.upload-button {
     background-color: white;
     color: #0F5AA9;
     padding: 8px 15px;
