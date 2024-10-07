@@ -435,7 +435,8 @@ export default {
 }
 
 
-.upload-button {
+.upload-button,
+.process-data-button {
     background-color: white;
     color: #0F5AA9;
     padding: 8px 15px;
